@@ -1,8 +1,7 @@
 /* =========================
-   ORIVO — Visual Identity
+   ORIVO — VISUAL IDENTITY
    ========================= */
 
-/* GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 /* RESET */
@@ -52,6 +51,7 @@ body {
   color: var(--text-main);
   font-size: 14px;
   font-weight: 500;
+  transition: color 0.25s ease;
 }
 
 .nav a:hover {
@@ -91,6 +91,12 @@ body {
   color: #fff;
   font-size: 14px;
   cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
 }
 
 /* =========================
@@ -112,10 +118,23 @@ body {
   gap: 34px;
 }
 
+.card {
+  transition: transform 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
 .card .image {
   height: 240px;
   background: #EDEDED;
   margin-bottom: 14px;
+  transition: opacity 0.35s ease;
+}
+
+.card:hover .image {
+  opacity: 0.92;
 }
 
 .item-name {
@@ -160,12 +179,22 @@ body {
 .shop-card {
   display: flex;
   flex-direction: column;
+  transition: transform 0.35s ease;
+}
+
+.shop-card:hover {
+  transform: translateY(-4px);
 }
 
 .shop-image {
   height: 300px;
   background: #EDEDED;
   margin-bottom: 16px;
+  transition: opacity 0.35s ease;
+}
+
+.shop-card:hover .shop-image {
+  opacity: 0.92;
 }
 
 .shop-name {
@@ -240,6 +269,12 @@ body {
   border: none;
   font-size: 14px;
   cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.product-btn:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
 }
 
 /* =========================
@@ -261,10 +296,23 @@ body {
   gap: 34px;
 }
 
+.category-card {
+  transition: transform 0.35s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+}
+
 .category-card .image {
   height: 240px;
   background: #EDEDED;
   margin-bottom: 14px;
+  transition: opacity 0.35s ease;
+}
+
+.category-card:hover .image {
+  opacity: 0.92;
 }
 
 .category-card p {
@@ -274,6 +322,11 @@ body {
 .category-card span {
   font-size: 13px;
   color: var(--accent);
+  transition: color 0.25s ease;
+}
+
+.category-card:hover span {
+  color: var(--text-main);
 }
 
 /* =========================
@@ -321,12 +374,23 @@ body {
   background: var(--text-main);
   color: #fff;
   cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.cta-buttons button:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
 }
 
 .cta-buttons .outline {
   background: transparent;
   border: 1px solid var(--border-light);
   color: var(--text-main);
+}
+
+.cta-buttons .outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* =========================
@@ -347,6 +411,11 @@ body {
   font-size: 13px;
   color: var(--text-muted);
   text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
 }
 
 .footer p {
@@ -359,23 +428,43 @@ body {
    ========================= */
 @media (max-width: 768px) {
 
-  .header { padding: 20px; }
-  .nav { display: none; }
+  .header {
+    padding: 20px;
+  }
 
-  .hero { padding: 100px 20px; }
-  .hero h1 { font-size: 40px; letter-spacing: 3px; }
-  .hero h2 { font-size: 20px; }
-  .hero p { font-size: 14px; }
+  .nav {
+    display: none;
+  }
 
-  .featured,
-  .shop,
-  .categories,
-  .story,
-  .cta {
+  .hero {
+    padding: 100px 20px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+    letter-spacing: 3px;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .featured {
+    background: transparent;
+    padding: 80px 20px;
+  }
+
+  .shop {
+    background: #F3F3F1;
     padding: 80px 20px;
   }
 
   .product-detail {
+    background: transparent;
     padding: 100px 20px;
   }
 
@@ -386,6 +475,7 @@ body {
 
   .product-image {
     height: 360px;
+    margin-bottom: 10px;
   }
 
   .product-title {
@@ -395,6 +485,12 @@ body {
   .product-btn {
     width: 100%;
     padding: 16px 0;
+  }
+
+  .categories,
+  .story,
+  .cta {
+    padding: 80px 20px;
   }
 
   .footer {
