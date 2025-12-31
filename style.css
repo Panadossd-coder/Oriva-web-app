@@ -529,6 +529,7 @@ body {
   .footer {
     padding: 50px 20px;
   }
+  }
 /* =========================
    FEATURED PICKS — FINAL LOCK
    ========================= */
@@ -573,4 +574,18 @@ body {
 .featured .item-type {
   font-size: 13px;
   color: var(--text-muted);
+}
+/* ===== FEATURED PICKS — HARD OVERRIDE ===== */
+
+.featured .card {
+  transform: none !important;
+}
+
+.featured .card:hover {
+  transform: none !important;
+}
+
+.featured .card .image {
+  height: 340px !important;
+  margin-bottom: 20px !important;
 }
