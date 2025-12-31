@@ -536,3 +536,60 @@ body {
   }
 
 }
+/* =========================
+   ORIVO — Final Mobile Polish
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* REDUCE TOP SPACE */
+  .product-page {
+    padding-top: 20px;
+  }
+
+  /* IMAGE HEIGHT TUNING */
+  .product-images .main-image {
+    height: 260px; /* was too tall */
+  }
+
+  /* THUMBNAILS TIGHTER */
+  .image-thumbs {
+    margin-top: 8px;
+    gap: 8px;
+  }
+
+  .image-thumbs .thumb {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* PRODUCT DETAILS SPACING */
+  .product-details {
+    margin-top: 10px;
+  }
+
+  .product-title {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .product-description {
+    margin-bottom: 18px;
+  }
+
+  /* BUTTONS MORE COMPACT */
+  .product-actions {
+    margin: 20px 0;
+  }
+
+  /* RELATED GRID FIX */
+  .related .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .related .card .image {
+    height: 180px;
+  }
+
+}
