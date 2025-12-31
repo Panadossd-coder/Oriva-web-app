@@ -1,12 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <meta http-equiv="Cache-Control" content="no-store" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <title>ORIVO — Product</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ORIVO — Clean Everyday Shirt</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -14,13 +11,13 @@
 
   <!-- HEADER -->
   <header class="header">
-    <div class="logo">ORIVO</div>
+    <h1 class="logo">ORIVO</h1>
   </header>
 
   <!-- PRODUCT PAGE -->
   <main class="product-page">
 
-    <!-- IMAGES -->
+    <!-- PRODUCT IMAGES -->
     <section class="product-images">
       <div class="main-image"></div>
       <div class="image-thumbs">
@@ -30,10 +27,10 @@
       </div>
     </section>
 
-    <!-- DETAILS -->
+    <!-- PRODUCT DETAILS -->
     <section class="product-details">
-      <div class="product-category">Clothing</div>
-      <h1 class="product-title">Clean Everyday Shirt</h1>
+      <span class="product-category">Clothing</span>
+      <h2 class="product-title">Clean Everyday Shirt</h2>
       <div class="product-price">UGX 120,000</div>
 
       <p class="product-description">
@@ -56,26 +53,10 @@
         <button class="btn-outline">Contact to buy</button>
       </div>
 
-      <div class="product-note">
-        Curated by ORIVO • Selected for clean style
-      </div>
-    </section>
-
-    <!-- LOWER CONTENT (ORDERED BY CSS) -->
-    <div class="product-lower">
-
-      <!-- WHY -->
-      <section class="product-style">
-        <h3>Why we selected this</h3>
-        <p>
-          This piece stands out for its simplicity and flexibility.
-          It works across different looks without forcing attention.
-        </p>
-      </section>
-
-      <!-- RELATED -->
+      <!-- RELATED (PLACED IMMEDIATELY AFTER ACTIONS) -->
       <section class="related">
         <h3>You may also like</h3>
+
         <div class="related-grid">
           <div class="card">
             <div class="image"></div>
@@ -97,18 +78,30 @@
         </div>
       </section>
 
-    </div>
+      <div class="product-note">
+        Curated by ORIVO • Selected for clean style
+      </div>
+    </section>
+
+    <!-- WHY SECTION (LAST ON MOBILE) -->
+    <section class="product-style">
+      <h3>Why we selected this</h3>
+      <p>
+        This piece stands out for its simplicity and flexibility.
+        It works across different looks without forcing attention.
+      </p>
+    </section>
 
   </main>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="logo">ORIVO</div>
-    <div class="footer-links">
+    <h2 class="logo">ORIVO</h2>
+    <nav class="footer-links">
       <a href="#">Shop</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
-    </div>
+    </nav>
     <p>© ORIVO — Curated Style</p>
   </footer>
 
