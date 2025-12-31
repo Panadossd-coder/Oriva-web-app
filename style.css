@@ -1,36 +1,31 @@
-/* =================================================
-   ORIVO — MASTER CSS (CLEAN + LOCKED)
-   ================================================= */
-
-/* FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-/* RESET */
+/* =========================
+   RESET & VARIABLES
+   ========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ROOT */
 :root {
-  --bg-main: #F7F7F5;
-  --text-main: #111111;
-  --text-muted: #6B6B6B;
-  --border-light: #E5E5E5;
+  --bg: #F7F7F5;
+  --text: #111;
+  --muted: #6B6B6B;
+  --border: #E5E5E5;
 }
 
-/* BODY */
 body {
-  background: var(--bg-main);
-  color: var(--text-main);
+  background: var(--bg);
+  color: var(--text);
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
 }
 
-/* =================================================
+/* =========================
    HEADER
-   ================================================= */
+   ========================= */
 .header {
   padding: 20px;
 }
@@ -41,79 +36,90 @@ body {
   font-weight: 700;
 }
 
-/* =================================================
+/* =========================
    PRODUCT PAGE
-   ================================================= */
+   ========================= */
 .product-page {
   padding: 20px;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
-/* IMAGES */
+/* =========================
+   IMAGES
+   ========================= */
 .main-image {
-  height: 280px;
-  background: #ededed;
+  width: 100%;
+  height: 340px;
+  background: #EDEDED;
   margin-bottom: 14px;
 }
 
 .image-thumbs {
   display: flex;
   gap: 10px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .thumb {
-  width: 64px;
-  height: 64px;
-  background: #ededed;
+  width: 72px;
+  height: 72px;
+  background: #EDEDED;
 }
 
-/* DETAILS */
+/* =========================
+   PRODUCT DETAILS
+   ========================= */
 .product-category {
   font-size: 12px;
-  color: #888;
+  color: var(--muted);
   text-transform: uppercase;
-  margin-bottom: 6px;
+  letter-spacing: 1px;
 }
 
 .product-title {
   font-family: 'Playfair Display', serif;
   font-size: 28px;
-  margin-bottom: 6px;
+  margin: 8px 0;
 }
 
 .product-price {
-  font-weight: 500;
-  margin-bottom: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .product-description {
-  color: var(--text-muted);
+  color: var(--muted);
   margin-bottom: 24px;
 }
 
-/* OPTIONS */
+/* =========================
+   SIZE OPTIONS
+   ========================= */
 .product-options label {
   font-size: 13px;
-  margin-bottom: 8px;
   display: block;
+  margin-bottom: 10px;
 }
 
 .options {
   display: flex;
   gap: 10px;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 .options button {
-  padding: 8px 14px;
-  border: 1px solid var(--border-light);
+  padding: 8px 16px;
+  border: 1px solid var(--border);
   background: transparent;
   font-size: 13px;
 }
 
-/* ACTIONS */
+/* =========================
+   ACTION BUTTONS
+   ========================= */
 .product-actions {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .btn-primary {
@@ -122,70 +128,30 @@ body {
   background: #111;
   color: #fff;
   border: none;
-  margin-bottom: 10px;
   font-size: 14px;
+  margin-bottom: 12px;
 }
 
 .btn-outline {
   width: 100%;
   padding: 14px;
   background: transparent;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border);
   font-size: 14px;
 }
 
 .product-note {
   font-size: 12px;
-  color: var(--text-muted);
+  color: var(--muted);
   margin-bottom: 40px;
 }
 
-/* =================================================
-   FEATURED PICKS
-   ================================================= */
-.featured {
-  padding: 80px 20px;
-}
-
-.featured h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  margin-bottom: 36px;
-}
-
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 56px;
-}
-
-.featured .card {
-  transform: none;
-}
-
-.featured .image {
-  height: 340px;
-  background: #ededed;
-  margin-bottom: 20px;
-}
-
-.featured .item-name {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 6px;
-}
-
-.featured .item-type {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-/* =================================================
+/* =========================
    RELATED PRODUCTS
-   ================================================= */
+   ========================= */
 .related {
-  border-top: 1px solid var(--border-light);
-  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  padding-top: 32px;
   margin-bottom: 60px;
 }
 
@@ -198,7 +164,7 @@ body {
 .related-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  gap: 28px;
 }
 
 .related .card {
@@ -206,28 +172,28 @@ body {
 }
 
 .related .image {
-  height: 240px;
-  background: #ededed;
-  margin-bottom: 14px;
+  width: 100%;
+  height: 220px;
+  background: #EDEDED;
+  margin-bottom: 10px;
 }
 
-.related .item-name {
-  font-size: 15px;
+.item-name {
   font-weight: 500;
   margin-bottom: 4px;
 }
 
-.related .item-type {
+.item-type {
   font-size: 12px;
-  color: var(--text-muted);
+  color: var(--muted);
 }
 
-/* =================================================
+/* =========================
    WHY SECTION
-   ================================================= */
+   ========================= */
 .product-style {
-  border-top: 1px solid var(--border-light);
-  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  padding-top: 32px;
   margin-bottom: 60px;
 }
 
@@ -237,41 +203,31 @@ body {
   margin-bottom: 14px;
 }
 
-.product-style p {
-  color: var(--text-muted);
-}
-
-/* =================================================
+/* =========================
    FOOTER
-   ================================================= */
+   ========================= */
 .footer {
-  text-align: center;
+  border-top: 1px solid var(--border);
   padding: 40px 20px;
-  border-top: 1px solid var(--border-light);
+  text-align: center;
 }
 
 .footer-links a {
-  margin: 0 10px;
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--muted);
+  margin: 0 10px;
   text-decoration: none;
 }
 
-/* =================================================
-   MOBILE — SINGLE SOURCE OF TRUTH
-   ================================================= */
+/* =========================
+   MOBILE REFINEMENT
+   ========================= */
 @media (max-width: 768px) {
+  .main-image {
+    height: 300px;
+  }
 
-  .featured-grid,
   .related-grid {
     grid-template-columns: 1fr;
-  }
-
-  .featured .image {
-    height: 240px;
-  }
-
-  .related .image {
-    height: 220px;
   }
 }
