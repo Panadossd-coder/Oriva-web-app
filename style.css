@@ -192,3 +192,16 @@ body {
     order: 2;
   }
 }
+/* FORCE RELATED TO FEEL ATTACHED TO PRODUCT */
+.related {
+  margin-top: 20px !important;
+  padding-top: 10px;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* PUSH WHY SECTION CLEARLY DOWN */
+.product-style {
+  margin-top: 60px !important;
+  padding-top: 20px;
+  border-top: 1px solid #e5e5e5;
+}
