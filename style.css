@@ -8,7 +8,7 @@
 
 :root {
   --bg-main: #F7F7F5;
-  --text-main: #111;
+  --text-main: #111111;
   --text-muted: #6B6B6B;
   --accent: #8FA99B;
   --border-light: #E5E5E5;
@@ -19,15 +19,11 @@ body {
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* HEADER */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 40px;
+  padding: 20px;
 }
 
 .logo {
@@ -36,40 +32,31 @@ body {
   font-weight: 700;
 }
 
-.nav a {
-  margin-left: 24px;
-  text-decoration: none;
-  color: var(--text-main);
-}
-
-/* PRODUCT */
+/* PRODUCT PAGE */
 .product-page {
-  padding: 60px 40px;
+  padding: 20px;
 }
 
-.product-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-}
-
+/* IMAGES */
 .main-image {
-  height: 420px;
+  height: 260px;
   background: #EDEDED;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .image-thumbs {
   display: flex;
-  gap: 10px;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
 .thumb {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   background: #EDEDED;
 }
 
+/* DETAILS */
 .product-category {
   font-size: 12px;
   color: var(--accent);
@@ -78,23 +65,30 @@ body {
 
 .product-title {
   font-family: 'Playfair Display', serif;
-  font-size: 34px;
-  margin: 10px 0;
+  font-size: 26px;
+  margin: 8px 0;
 }
 
 .product-price {
-  margin-bottom: 16px;
+  font-weight: 500;
+  margin-bottom: 14px;
 }
 
 .product-description {
   color: var(--text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+}
+
+/* OPTIONS */
+.product-options label {
+  font-size: 13px;
+  display: block;
+  margin-bottom: 8px;
 }
 
 .options {
   display: flex;
   gap: 10px;
-  margin-bottom: 24px;
 }
 
 .options button {
@@ -103,46 +97,70 @@ body {
   background: transparent;
 }
 
+/* ACTIONS */
 .product-actions {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 12px;
+  margin: 20px 0;
 }
 
 .btn-primary {
-  padding: 14px 32px;
-  border: none;
-  background: var(--text-main);
+  width: 100%;
+  padding: 14px;
+  background: #111;
   color: #fff;
+  border: none;
+  margin-bottom: 10px;
 }
 
 .btn-outline {
-  padding: 14px 32px;
-  border: 1px solid var(--border-light);
+  width: 100%;
+  padding: 14px;
   background: transparent;
+  border: 1px solid var(--border-light);
 }
 
 .product-note {
   font-size: 12px;
   color: var(--text-muted);
+  margin-bottom: 40px;
 }
 
-/* SECTIONS */
-.product-style,
+/* LOWER SECTIONS */
+.product-lower {
+  display: flex;
+  flex-direction: column;
+}
+
+/* WHY */
+.product-style {
+  order: 1;
+  margin-bottom: 40px;
+}
+
+.product-style h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 12px;
+}
+
+/* RELATED */
 .related {
-  margin-top: 80px;
+  order: 2;
+}
+
+.related h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 16px;
 }
 
 .related-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .card .image {
-  height: 220px;
+  height: 180px;
   background: #EDEDED;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .item-type {
@@ -153,62 +171,24 @@ body {
 /* FOOTER */
 .footer {
   text-align: center;
-  padding: 40px;
+  padding: 40px 20px;
   border-top: 1px solid var(--border-light);
-  padding-bottom: calc(40px + env(safe-area-inset-bottom));
 }
 
-/* VISIBILITY CONTROL */
-.mobile-only { display: none; }
-.desktop-only { display: block; }
+.footer-links a {
+  margin: 0 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
 
-/* MOBILE */
+/* MOBILE ORDER FIX */
 @media (max-width: 768px) {
-
-  .header {
-    padding: 20px;
+  .related {
+    order: 1;
   }
 
-  .nav {
-    display: none;
+  .product-style {
+    order: 2;
   }
-
-  .product-page {
-    padding: 30px 20px;
-  }
-
-  .product-main {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .main-image {
-    height: 260px;
-  }
-
-  .thumb {
-    width: 64px;
-    height: 64px;
-  }
-
-  .product-title {
-    font-size: 26px;
-  }
-
-  .product-actions {
-    flex-direction: column;
-  }
-
-  .btn-primary,
-  .btn-outline {
-    width: 100%;
-  }
-
-  .related-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .desktop-only { display: none; }
-  .mobile-only { display: block; }
 }
