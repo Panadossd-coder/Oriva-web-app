@@ -1,55 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clean Everyday Shirt — ORIVO</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <title>ORIVO — Product Test (Inline CSS)</title>
+
+  <style>
+    /* =========================
+       ORIVO — INLINE TEST CSS
+       (identical visual system, no external files)
+       ========================= */
+
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    :root {
+      --bg-main:#F7F7F5; --text-main:#111; --text-muted:#6B6B6B;
+      --accent:#8FA99B; --border-light:#E5E5E5;
+    }
+    html,body { height:100%; }
+    body {
+      background:var(--bg-main);
+      color:var(--text-main);
+      font-family:'Inter',sans-serif;
+      line-height:1.6;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    /* header */
+    .header { display:flex; justify-content:space-between; align-items:center; padding:24px 40px; }
+    .logo { font-family:'Playfair Display', serif; font-size:26px; font-weight:700; }
+    .nav a { margin-left:24px; text-decoration:none; color:var(--text-main); }
+
+    /* product */
+    .product-page { padding:60px 40px; max-width:1200px; margin:0 auto; }
+    .product-main { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+
+    .main-image { height:420px; background:#EDEDED; margin-bottom:12px; }
+    .image-thumbs { display:flex; gap:10px; margin-bottom:6px; }
+    .thumb { width:72px; height:72px; background:#EDEDED; }
+
+    .product-category { font-size:12px; color:var(--accent); text-transform:uppercase; letter-spacing:1px; }
+    .product-title { font-family:'Playfair Display', serif; font-size:34px; margin:10px 0; }
+    .product-price { margin-bottom:16px; font-weight:500; }
+    .product-description { color:var(--text-muted); margin-bottom:24px; }
+
+    .options { display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap; }
+    .options button { padding:8px 14px; border:1px solid var(--border-light); background:transparent; }
+
+    .product-actions { display:flex; gap:12px; margin-bottom:12px; }
+    .btn-primary { padding:14px 32px; border:none; background:var(--text-main); color:#fff; }
+    .btn-outline { padding:14px 32px; border:1px solid var(--border-light); background:transparent; }
+
+    .product-note { font-size:12px; color:var(--text-muted); }
+
+    .product-style, .related { margin-top:80px; }
+    .product-style h3, .related h3 { font-family:'Playfair Display', serif; margin-bottom:16px; font-size:28px; }
+    .product-style p { color:var(--text-muted); font-size:15px; max-width:700px; }
+
+    .related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+    .card .image { height:220px; background:#EDEDED; margin-bottom:10px; }
+    .item-name { font-weight:500; }
+    .item-type { font-size:12px; color:var(--text-muted); }
+
+    .footer { text-align:center; padding:40px; border-top:1px solid var(--border-light); padding-bottom:calc(40px + env(safe-area-inset-bottom)); }
+
+    /* VISIBILITY */
+    .mobile-only { display:none; }
+    .desktop-only { display:block; }
+
+    /* SINGLE MOBILE BLOCK — ONLY ONE MEDIA SECTION */
+    @media (max-width:768px) {
+      .header { padding:20px; }
+      .nav { display:none; }
+      .product-page { padding:30px 20px; }
+      .product-main { grid-template-columns:1fr; gap:30px; }
+      .main-image { height:260px; }
+      .thumb { width:64px; height:64px; }
+      .product-title { font-size:26px; }
+      .product-actions { flex-direction:column; }
+      .btn-primary, .btn-outline { width:100%; }
+      .related-grid { grid-template-columns:repeat(2,1fr); gap:16px; }
+      .card .image { height:180px; }
+
+      /* mobile order: show mobile-only related before Why section */
+      .desktop-only { display:none; }
+      .mobile-only { display:block; margin-top:60px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="logo">ORIVO</div>
-    <nav class="nav">
-      <a href="#">Shop</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
+    <nav class="nav"><a href="#">Shop</a><a href="#">About</a><a href="#">Contact</a></nav>
   </header>
 
-  <!-- PRODUCT PAGE -->
   <main class="product-page">
 
-    <!-- PRODUCT MAIN -->
     <section class="product-main">
-
       <div class="product-images">
-        <div class="main-image"></div>
+        <div class="main-image" aria-hidden="true"></div>
         <div class="image-thumbs">
-          <div class="thumb"></div>
-          <div class="thumb"></div>
-          <div class="thumb"></div>
+          <div class="thumb" aria-hidden="true"></div>
+          <div class="thumb" aria-hidden="true"></div>
+          <div class="thumb" aria-hidden="true"></div>
         </div>
       </div>
 
       <div class="product-details">
-        <span class="product-category">Clothing</span>
+        <div class="product-category">Clothing</div>
         <h1 class="product-title">Clean Everyday Shirt</h1>
-        <p class="product-price">UGX 120,000</p>
+        <div class="product-price">UGX 120,000</div>
 
-        <p class="product-description">
+        <div class="product-description">
           A clean, versatile piece selected for everyday comfort and style.
           Easy to wear, easy to match — no overthinking.
-        </p>
+        </div>
 
         <div class="product-options">
-          <label>Size</label>
+          <label style="display:block;margin-bottom:8px;">Size</label>
           <div class="options">
-            <button>S</button>
-            <button>M</button>
-            <button>L</button>
-            <button>XL</button>
+            <button>S</button><button>M</button><button>L</button><button>XL</button>
           </div>
         </div>
 
@@ -58,77 +132,66 @@
           <button class="btn-outline">Contact to buy</button>
         </div>
 
-        <p class="product-note">
-          Curated by ORIVO • Selected for clean style
-        </p>
+        <div class="product-note">Curated by ORIVO • Selected for clean style</div>
       </div>
-
     </section>
 
-    <!-- RELATED (DESKTOP VERSION) -->
-    <section class="related desktop-only">
+    <!-- MOBILE VERSION OF RELATED (shown only on small screens) -->
+    <section class="related mobile-only" aria-label="You may also like (mobile)">
       <h3>You may also like</h3>
       <div class="related-grid">
         <div class="card">
-          <div class="image"></div>
-          <p class="item-name">Minimal Sneakers</p>
-          <span class="item-type">Shoes</span>
+          <div class="image" aria-hidden="true"></div>
+          <div class="item-name">Minimal Sneakers</div>
+          <div class="item-type">Shoes</div>
         </div>
         <div class="card">
-          <div class="image"></div>
-          <p class="item-name">Light Daily Scent</p>
-          <span class="item-type">Perfume</span>
+          <div class="image" aria-hidden="true"></div>
+          <div class="item-name">Light Daily Scent</div>
+          <div class="item-type">Perfume</div>
         </div>
         <div class="card">
-          <div class="image"></div>
-          <p class="item-name">Relaxed Fit Tee</p>
-          <span class="item-type">Clothing</span>
+          <div class="image" aria-hidden="true"></div>
+          <div class="item-name">Relaxed Fit Tee</div>
+          <div class="item-type">Clothing</div>
         </div>
       </div>
     </section>
 
     <!-- WHY -->
-    <section class="product-style">
+    <section class="product-style" aria-label="Why we selected this">
       <h3>Why we selected this</h3>
-      <p>
-        This piece stands out for its simplicity and flexibility.
-        It works across different looks without forcing attention.
-      </p>
+      <p>This piece stands out for its simplicity and flexibility. It works across different looks without forcing attention.</p>
     </section>
 
-    <!-- RELATED (MOBILE VERSION) -->
-    <section class="related mobile-only">
+    <!-- DESKTOP VERSION OF RELATED (hidden on mobile) -->
+    <section class="related desktop-only" aria-label="You may also like (desktop)">
       <h3>You may also like</h3>
       <div class="related-grid">
         <div class="card">
-          <div class="image"></div>
-          <p class="item-name">Minimal Sneakers</p>
-          <span class="item-type">Shoes</span>
+          <div class="image" aria-hidden="true"></div>
+          <div class="item-name">Minimal Sneakers</div>
+          <div class="item-type">Shoes</div>
         </div>
         <div class="card">
-          <div class="image"></div>
-          <p class="item-name">Light Daily Scent</p>
-          <span class="item-type">Perfume</span>
+          <div class="image" aria-hidden="true"></div>
+          <div class="item-name">Light Daily Scent</div>
+          <div class="item-type">Perfume</div>
         </div>
         <div class="card">
-          <div class="image"></div>
-          <p class="item-name">Relaxed Fit Tee</p>
-          <span class="item-type">Clothing</span>
+          <div class="image" aria-hidden="true"></div>
+          <div class="item-name">Relaxed Fit Tee</div>
+          <div class="item-type">Clothing</div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
-    <p class="logo">ORIVO</p>
-    <div class="footer-links">
-      <a href="#">Shop</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </div>
-    <p>© ORIVO — Curated Style</p>
+    <div class="logo" style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px;">ORIVO</div>
+    <div style="margin-bottom:8px;"><a href="#" style="color:var(--text-main);text-decoration:underline;">Shop</a> <a href="#" style="color:var(--text-main);text-decoration:underline;margin-left:12px;">About</a> <a href="#" style="color:var(--text-main);text-decoration:underline;margin-left:12px;">Contact</a></div>
+    <div style="color:var(--text-muted);margin-top:8px;">© ORIVO — Curated Style</div>
   </footer>
 
 </body>
