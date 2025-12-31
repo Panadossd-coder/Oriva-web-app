@@ -1,11 +1,18 @@
+/* =================================================
+   ORIVO — MASTER CSS (CLEAN + LOCKED)
+   ================================================= */
+
+/* FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ROOT */
 :root {
   --bg-main: #F7F7F5;
   --text-main: #111111;
@@ -13,6 +20,7 @@
   --border-light: #E5E5E5;
 }
 
+/* BODY */
 body {
   background: var(--bg-main);
   color: var(--text-main);
@@ -20,7 +28,9 @@ body {
   line-height: 1.6;
 }
 
-/* HEADER */
+/* =================================================
+   HEADER
+   ================================================= */
 .header {
   padding: 20px;
 }
@@ -31,28 +41,30 @@ body {
   font-weight: 700;
 }
 
-/* PAGE */
+/* =================================================
+   PRODUCT PAGE
+   ================================================= */
 .product-page {
   padding: 20px;
 }
 
 /* IMAGES */
 .main-image {
-  height: 260px;
-  background: #EDEDED;
-  margin-bottom: 12px;
+  height: 280px;
+  background: #ededed;
+  margin-bottom: 14px;
 }
 
 .image-thumbs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 10px;
+  margin-bottom: 28px;
 }
 
 .thumb {
   width: 64px;
   height: 64px;
-  background: #EDEDED;
+  background: #ededed;
 }
 
 /* DETAILS */
@@ -60,22 +72,23 @@ body {
   font-size: 12px;
   color: #888;
   text-transform: uppercase;
+  margin-bottom: 6px;
 }
 
 .product-title {
   font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  margin: 8px 0;
+  font-size: 28px;
+  margin-bottom: 6px;
 }
 
 .product-price {
   font-weight: 500;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .product-description {
   color: var(--text-muted);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 /* OPTIONS */
@@ -88,13 +101,14 @@ body {
 .options {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .options button {
   padding: 8px 14px;
   border: 1px solid var(--border-light);
   background: transparent;
+  font-size: 13px;
 }
 
 /* ACTIONS */
@@ -109,6 +123,7 @@ body {
   color: #fff;
   border: none;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .btn-outline {
@@ -116,6 +131,7 @@ body {
   padding: 14px;
   background: transparent;
   border: 1px solid var(--border-light);
+  font-size: 14px;
 }
 
 .product-note {
@@ -124,107 +140,11 @@ body {
   margin-bottom: 40px;
 }
 
-/* RELATED */
-.related {
-  border-top: 1px solid var(--border-light);
-  padding-top: 30px;
-  margin-bottom: 40px;
-}
-
-.related h2 {
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 16px;
-}
-
-.related-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-/* =========================
-   RELATED PRODUCTS — EDITORIAL STYLE
-   ========================= */
-
-.related-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-}
-
-.related .card {
-  transform: none;
-}
-
-.related .image {
-  height: 240px;
-  background: #ededed;
-  margin-bottom: 14px;
-}
-
-.related .item-name {
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
-.related .item-type {
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-@media (max-width: 768px) {
-  .related-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .related .image {
-    height: 220px;
-  }
-}
-
-.card .image {
-  height: 180px;
-  background: #EDEDED;
-  margin-bottom: 8px;
-}
-
-.item-type {
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-/* WHY */
-.product-style {
-  border-top: 1px solid var(--border-light);
-  padding-top: 30px;
-  margin-bottom: 60px;
-}
-
-.product-style h2 {
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 12px;
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 40px 20px;
-  border-top: 1px solid var(--border-light);
-}
-
-.footer-links a {
-  margin: 0 10px;
-  font-size: 13px;
-  color: var(--text-muted);
-  text-decoration: none;
-}
-/* =========================
+/* =================================================
    FEATURED PICKS
-   ========================= */
-
+   ================================================= */
 .featured {
-  padding: 100px 40px;
+  padding: 80px 20px;
 }
 
 .featured h3 {
@@ -260,13 +180,98 @@ body {
   color: var(--text-muted);
 }
 
+/* =================================================
+   RELATED PRODUCTS
+   ================================================= */
+.related {
+  border-top: 1px solid var(--border-light);
+  padding-top: 40px;
+  margin-bottom: 60px;
+}
+
+.related h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin-bottom: 24px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.related .card {
+  transform: none;
+}
+
+.related .image {
+  height: 240px;
+  background: #ededed;
+  margin-bottom: 14px;
+}
+
+.related .item-name {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.related .item-type {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* =================================================
+   WHY SECTION
+   ================================================= */
+.product-style {
+  border-top: 1px solid var(--border-light);
+  padding-top: 40px;
+  margin-bottom: 60px;
+}
+
+.product-style h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+
+.product-style p {
+  color: var(--text-muted);
+}
+
+/* =================================================
+   FOOTER
+   ================================================= */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid var(--border-light);
+}
+
+.footer-links a {
+  margin: 0 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+/* =================================================
+   MOBILE — SINGLE SOURCE OF TRUTH
+   ================================================= */
 @media (max-width: 768px) {
-  .featured-grid {
+
+  .featured-grid,
+  .related-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
   }
 
   .featured .image {
     height: 240px;
+  }
+
+  .related .image {
+    height: 220px;
   }
 }
