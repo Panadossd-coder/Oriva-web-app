@@ -209,3 +209,29 @@ body {
   }
 
 }
+/* =========================
+   YOU MAY ALSO LIKE — MOBILE GRID FIX
+   ========================= */
+
+@media (max-width: 768px) {
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .related-grid .image {
+    height: 200px;
+    margin-bottom: 14px;
+  }
+
+  .related-grid .item-name {
+    font-size: 14px;
+  }
+
+  .related-grid .item-type {
+    font-size: 12px;
+  }
+
+}
