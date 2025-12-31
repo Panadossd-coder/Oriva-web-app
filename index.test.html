@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORIVO — Product</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #F7F7F5;
+  --text: #111;
+  --muted: #6B6B6B;
+  --border: #E5E5E5;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  padding: 20px;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* =========================
+   PRODUCT PAGE
+========================= */
+.product-page {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* =========================
+   PRODUCT IMAGES
+========================= */
+.product-main-image {
+  width: 100%;
+  height: 340px;
+  background: #EDEDED;
+  margin-bottom: 12px;
+}
+
+.product-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.product-thumb {
+  width: 72px;
+  height: 72px;
+  background: #EDEDED;
+}
+
+/* =========================
+   PRODUCT INFO
+========================= */
+.product-category {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.product-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin: 8px 0;
+}
+
+.product-price {
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.product-description {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* =========================
+   SIZE
+========================= */
+.size-label {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.size-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.size-options button {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  background: transparent;
+  font-size: 13px;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+.actions {
+  margin-bottom: 18px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: #111;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.btn-outline {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border);
+  background: transparent;
+  font-size: 14px;
+}
+
+.product-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+/* =========================
+   RELATED
+========================= */
+.related {
+  border-top: 1px solid var(--border);
+  padding-top: 32px;
+  margin-bottom: 60px;
+}
+
+.related-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin-bottom: 24px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.related-item-image {
+  width: 100%;
+  height: 220px;
+  background: #EDEDED;
+  margin-bottom: 8px;
+}
+
+.related-name {
+  font-weight: 500;
+}
+
+.related-type {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer a {
+  margin: 0 12px;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-main-image {
+    height: 300px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">ORIVO</div>
+</header>
+
+<main class="product-page">
+
+  <div class="product-main-image"></div>
+
+  <div class="product-thumbs">
+    <div class="product-thumb"></div>
+    <div class="product-thumb"></div>
+    <div class="product-thumb"></div>
+  </div>
+
+  <div class="product-category">Clothing</div>
+  <h1 class="product-title">Clean Everyday Shirt</h1>
+  <div class="product-price">UGX 120,000</div>
+
+  <p class="product-description">
+    A clean, versatile piece selected for everyday comfort and style.
+    Easy to wear, easy to match — no overthinking.
+  </p>
+
+  <div class="size-label">Size</div>
+  <div class="size-options">
+    <button>S</button>
+    <button>M</button>
+    <button>L</button>
+    <button>XL</button>
+  </div>
+
+  <div class="actions">
+    <button class="btn-primary">Add to favourites</button>
+    <button class="btn-outline">Contact to buy</button>
+  </div>
+
+  <div class="product-note">
+    Curated by ORIVO • Selected for clean style
+  </div>
+
+  <section class="related">
+    <h2 class="related-title">You may also like</h2>
+
+    <div class="related-grid">
+      <div>
+        <div class="related-item-image"></div>
+        <div class="related-name">Minimal Sneakers</div>
+        <div class="related-type">Shoes</div>
+      </div>
+
+      <div>
+        <div class="related-item-image"></div>
+        <div class="related-name">Light Daily Scent</div>
+        <div class="related-type">Perfume</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <a href="#">Shop</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+</footer>
+
+</body>
+</html>
