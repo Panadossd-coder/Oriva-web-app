@@ -124,32 +124,9 @@ body {
   margin-bottom: 40px;
 }
 
-/* LOWER SECTIONS */
-.product-lower {
-  display: flex;
-  flex-direction: column;
-}
 
-/* WHY */
-.product-style {
-  order: 1;
-  margin-bottom: 40px;
-}
 
-.product-style h3 {
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 12px;
-}
 
-/* RELATED */
-.related {
-  order: 2;
-}
-
-.related h3 {
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 16px;
-}
 
 .related-grid {
   display: grid;
@@ -182,16 +159,7 @@ body {
   text-decoration: none;
 }
 
-/* MOBILE ORDER FIX */
-@media (max-width: 768px) {
-  .related {
-    order: 1;
-  }
 
-  .product-style {
-    order: 2;
-  }
-}
 /* FORCE RELATED TO FEEL ATTACHED TO PRODUCT */
 .related {
   margin-top: 20px !important;
