@@ -146,7 +146,28 @@ body {
   font-size: 12px;
   color: var(--text-muted);
 }
+/* Featured editorial override */
+.featured .grid {
+  gap: 48px;
+}
 
+.featured .card,
+.featured .card:hover {
+  transform: none;
+}
+
+.featured .card .image {
+  height: 300px;
+  margin-bottom: 18px;
+}
+
+.featured .item-name {
+  font-size: 16px;
+}
+
+.featured .item-type {
+  font-size: 13px;
+}
 /* =========================
    SHOP LISTING
    ========================= */
@@ -496,33 +517,4 @@ body {
   .footer {
     padding: 50px 20px;
   }
-}
-/* =========================
-   FEATURED PICKS — RESTORE EDITORIAL FEEL
-   ========================= */
 
-.featured .grid {
-  gap: 48px;
-}
-
-.featured .card {
-  transform: none;
-}
-
-.featured .card:hover {
-  transform: none;
-}
-
-.featured .card .image {
-  height: 300px;
-  margin-bottom: 18px;
-}
-
-.featured .item-name {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.featured .item-type {
-  font-size: 13px;
-}
