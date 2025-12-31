@@ -346,39 +346,3 @@ body {
   }
 
 }
-/* =========================
-   FEATURED PICKS — SCOPE FIX
-   ========================= */
-
-/* Desktop */
-.featured .grid {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 56px;
-}
-
-.featured .card .image {
-  height: 340px;
-  margin-bottom: 20px;
-}
-
-.featured .item-name {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 6px;
-}
-
-.featured .item-type {
-  font-size: 13px;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .featured .grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .featured .card .image {
-    height: 240px;
-  }
-}
