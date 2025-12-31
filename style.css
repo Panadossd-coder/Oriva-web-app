@@ -346,3 +346,119 @@ body {
   }
 
 }
+/* =========================
+   ORIVO — Product Page
+   ========================= */
+
+.product-page {
+  padding: 80px 40px;
+}
+
+/* MAIN LAYOUT */
+.product-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+/* IMAGES */
+.product-images .main-image {
+  background: #EDEDED;
+  height: 420px;
+  margin-bottom: 16px;
+}
+
+.image-thumbs {
+  display: flex;
+  gap: 12px;
+}
+
+.image-thumbs .thumb {
+  background: #EDEDED;
+  width: 80px;
+  height: 80px;
+}
+
+/* DETAILS */
+.product-category {
+  font-size: 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  margin: 10px 0;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.product-description {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* OPTIONS */
+.product-options label {
+  font-size: 13px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.product-options .options button {
+  padding: 8px 14px;
+  margin-right: 8px;
+  border: 1px solid var(--border-light);
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ACTIONS */
+.product-actions {
+  margin: 30px 0;
+}
+
+.btn-outline {
+  padding: 14px 32px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* NOTE */
+.product-note {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 60px 0;
+}
+
+/* STYLE NOTES */
+.product-style {
+  max-width: 600px;
+  margin-bottom: 80px;
+}
+
+.product-style h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 14px;
+}
+
+/* RELATED */
+.related h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 30px;
+}
