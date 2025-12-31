@@ -1,177 +1,124 @@
+/* =========================
+   ORIVO — Visual Identity
+   Colors + Fonts Applied
+   ========================= */
+
+/* GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-/* =========================
-   RESET & VARIABLES
-   ========================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ROOT COLORS */
 :root {
-  --bg: #F7F7F5;
-  --text: #111111;
-  --muted: #6B6B6B;
-  --border: #E5E5E5;
+  --bg-main: #F7F7F5;
+  --text-main: #111111;
+  --text-muted: #6B6B6B;
+  --accent: #8FA99B;
+  --border-light: #E5E5E5;
 }
 
+/* BODY */
 body {
-  background: var(--bg);
-  color: var(--text);
+  background: var(--bg-main);
+  color: var(--text-main);
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
 }
 
-/* =========================
-   HEADER
-   ========================= */
+/* HEADER */
 .header {
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
 }
 
 .logo {
   font-family: 'Playfair Display', serif;
   font-size: 26px;
   font-weight: 700;
+  letter-spacing: 2px;
 }
 
-/* =========================
-   PRODUCT PAGE
-   ========================= */
-.product-page {
-  padding: 20px;
-  max-width: 520px;
-  margin: 0 auto;
+.nav a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 500;
 }
 
-/* =========================
-   IMAGES
-   ========================= */
-.main-image {
-  width: 100%;
-  height: 320px;
-  background: #EDEDED;
-  margin-bottom: 14px;
+.nav a:hover {
+  color: var(--accent);
 }
 
-.image-thumbs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 24px;
+/* HERO */
+.hero {
+  padding: 110px 40px;
+  text-align: center;
 }
 
-.thumb {
-  width: 72px;
-  height: 72px;
-  background: #EDEDED;
-}
-
-/* =========================
-   DETAILS
-   ========================= */
-.product-category {
-  font-size: 12px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.product-title {
+.hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  margin: 8px 0;
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: 4px;
 }
 
-.product-price {
-  font-weight: 600;
-  margin-bottom: 16px;
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 12px 0;
 }
 
-.product-description {
-  color: var(--muted);
-  margin-bottom: 24px;
-}
-
-/* =========================
-   SIZE
-   ========================= */
-.product-options label {
-  font-size: 13px;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.options {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-.options button {
-  padding: 8px 16px;
-  border: 1px solid var(--border);
-  background: transparent;
-  font-size: 13px;
-}
-
-/* =========================
-   ACTIONS
-   ========================= */
-.product-actions {
-  margin-bottom: 16px;
+.hero p {
+  margin: 22px 0;
+  font-size: 15px;
+  color: var(--text-muted);
 }
 
 .btn-primary {
-  width: 100%;
-  padding: 14px;
-  background: #111;
-  color: #fff;
+  padding: 14px 32px;
   border: none;
-  margin-bottom: 12px;
+  background: var(--text-main);
+  color: #ffffff;
+  cursor: pointer;
   font-size: 14px;
+  font-weight: 500;
 }
 
-.btn-outline {
-  width: 100%;
-  padding: 14px;
-  background: transparent;
-  border: 1px solid var(--border);
-  font-size: 14px;
+.btn-primary:hover {
+  background: var(--accent);
 }
 
-.product-note {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 40px;
+/* FEATURED */
+.featured {
+  padding: 90px 40px;
 }
 
-/* =========================
-   RELATED
-   ========================= */
-.related {
-  border-top: 1px solid var(--border);
-  padding-top: 32px;
-  margin-bottom: 60px;
-}
-
-.related h2 {
+.featured h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  margin-bottom: 24px;
+  font-size: 28px;
+  margin-bottom: 36px;
 }
 
-.related-grid {
+.grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 34px;
 }
 
-.related .image {
-  width: 100%;
-  height: 220px;
+.card .image,
+.category-card .image {
   background: #EDEDED;
-  margin-bottom: 10px;
+  height: 240px;
+  margin-bottom: 14px;
 }
 
 .item-name {
@@ -181,30 +128,332 @@ body {
 
 .item-type {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--text-muted);
+}
+/* SHOP LISTING */
+.shop {
+  padding: 90px 40px;
 }
 
-/* =========================
-   FOOTER
-   ========================= */
-.footer {
-  border-top: 1px solid var(--border);
-  padding: 40px 20px;
+.shop-header {
+  max-width: 520px;
+  margin-bottom: 50px;
+}
+
+.shop-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.shop-header p {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
+}
+
+.shop-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-image {
+  height: 300px;
+  background: #EDEDED;
+  margin-bottom: 16px;
+}
+
+.shop-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-name {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.shop-category {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.shop-price {
+  font-size: 13px;
+  font-weight: 500;
+}
+/* PRODUCT DETAIL */
+.product-detail {
+  padding: 110px 40px;
+}
+
+.product-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.product-image {
+  height: 520px;
+  background: #EDEDED;
+}
+
+.product-info {
+  max-width: 420px;
+}
+
+.product-category {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.product-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.product-description {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+.product-actions {
+  margin-top: 10px;
+}
+
+.product-btn {
+  padding: 14px 34px;
+  background: var(--text-main);
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* CATEGORIES */
+.categories {
+  padding: 90px 40px;
+}
+
+.categories h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin-bottom: 36px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 34px;
+}
+
+.category-card p {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.category-card span {
+  font-size: 13px;
+  color: var(--accent);
+}
+
+/* STORY */
+.story {
+  padding: 90px 40px;
+  max-width: 720px;
+}
+
+.story h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.story p {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* CTA */
+.cta {
+  padding: 90px 40px;
   text-align: center;
 }
 
-.footer-links a {
-  font-size: 13px;
-  color: var(--muted);
-  margin: 0 10px;
-  text-decoration: none;
+.cta h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
+.cta p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.cta-buttons button {
+  padding: 12px 28px;
+  margin: 8px;
+  border: none;
+  background: var(--text-main);
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.cta-buttons button:hover {
+  background: var(--accent);
+}
+
+.cta-buttons .outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+}
+
+.cta-buttons .outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* FOOTER */
+.footer {
+  padding: 48px 40px;
+  text-align: center;
+  border-top: 1px solid var(--border-light);
+}
+
+.footer .logo {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  margin: 0 12px;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.footer p {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
 /* =========================
-   MOBILE ONLY
+   ORIVO — Mobile Responsive
    ========================= */
+
 @media (max-width: 768px) {
-  .related-grid {
+
+  /* HEADER */
+  .header {
+    padding: 20px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 80px 20px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+    letter-spacing: 3px;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  /* FEATURED */
+  .featured {
+    padding: 70px 20px;
+  }
+
+  .featured h3 {
+    font-size: 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+  }
+
+  .card .image {
+    height: 200px;
+  }
+
+  /* CATEGORIES */
+  .categories {
+    padding: 70px 20px;
+  }
+
+  .categories h3 {
+    font-size: 24px;
+  }
+
+  .category-grid {
     grid-template-columns: 1fr;
   }
-}
+
+  .category-card .image {
+    height: 220px;
+  }
+
+  /* STORY */
+  .story {
+    padding: 70px 20px;
+  }
+
+  .story h3 {
+    font-size: 24px;
+  }
+
+  /* CTA */
+  .cta {
+    padding: 70px 20px;
+  }
+
+  .cta h3 {
+    font-size: 24px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cta-buttons button {
+    width: 100%;
+    margin: 8px 0;
+  }
