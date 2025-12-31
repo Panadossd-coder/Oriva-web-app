@@ -11,7 +11,7 @@
 
 :root {
   --bg: #F7F7F5;
-  --text: #111;
+  --text: #111111;
   --muted: #6B6B6B;
   --border: #E5E5E5;
 }
@@ -50,7 +50,7 @@ body {
    ========================= */
 .main-image {
   width: 100%;
-  height: 340px;
+  height: 320px;
   background: #EDEDED;
   margin-bottom: 14px;
 }
@@ -68,7 +68,7 @@ body {
 }
 
 /* =========================
-   PRODUCT DETAILS
+   DETAILS
    ========================= */
 .product-category {
   font-size: 12px;
@@ -94,12 +94,12 @@ body {
 }
 
 /* =========================
-   SIZE OPTIONS
+   SIZE
    ========================= */
 .product-options label {
   font-size: 13px;
-  display: block;
   margin-bottom: 10px;
+  display: block;
 }
 
 .options {
@@ -116,10 +116,10 @@ body {
 }
 
 /* =========================
-   ACTION BUTTONS
+   ACTIONS
    ========================= */
 .product-actions {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .btn-primary {
@@ -128,8 +128,8 @@ body {
   background: #111;
   color: #fff;
   border: none;
-  font-size: 14px;
   margin-bottom: 12px;
+  font-size: 14px;
 }
 
 .btn-outline {
@@ -147,7 +147,7 @@ body {
 }
 
 /* =========================
-   RELATED PRODUCTS
+   RELATED
    ========================= */
 .related {
   border-top: 1px solid var(--border);
@@ -163,12 +163,8 @@ body {
 
 .related-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 28px;
-}
-
-.related .card {
-  transform: none;
 }
 
 .related .image {
@@ -189,21 +185,6 @@ body {
 }
 
 /* =========================
-   WHY SECTION
-   ========================= */
-.product-style {
-  border-top: 1px solid var(--border);
-  padding-top: 32px;
-  margin-bottom: 60px;
-}
-
-.product-style h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  margin-bottom: 14px;
-}
-
-/* =========================
    FOOTER
    ========================= */
 .footer {
@@ -220,13 +201,9 @@ body {
 }
 
 /* =========================
-   MOBILE REFINEMENT
+   MOBILE ONLY
    ========================= */
 @media (max-width: 768px) {
-  .main-image {
-    height: 300px;
-  }
-
   .related-grid {
     grid-template-columns: 1fr;
   }
