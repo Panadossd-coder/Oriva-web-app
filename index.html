@@ -1,213 +1,40 @@
+First this is the html 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ORIVO — Clean Everyday Shirt</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* VARIABLES */
-:root {
-  --bg: #f7f7f5;
-  --text: #111;
-  --muted: #6b6b6b;
-  --border: #e5e5e5;
-}
-
-/* BASE */
-body {
-  background: var(--bg);
-  font-family: 'Inter', sans-serif;
-  color: var(--text);
-  line-height: 1.6;
-}
-
-/* HEADER */
-.header {
-  padding: 20px;
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  font-weight: 700;
-}
-
-/* CONTAINER */
-.page {
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* IMAGE */
-.main-image {
-  width: 100%;
-  height: 340px;
-  background: #ededed;
-  margin-bottom: 14px;
-}
-
-.thumbs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-.thumb {
-  width: 70px;
-  height: 70px;
-  background: #ededed;
-}
-
-/* INFO */
-.category {
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: var(--muted);
-}
-
-.title {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  margin: 6px 0;
-}
-
-.price {
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.description {
-  color: var(--muted);
-  margin-bottom: 26px;
-}
-
-/* SIZE */
-.size-label {
-  font-size: 13px;
-  margin-bottom: 10px;
-}
-
-.sizes {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 28px;
-}
-
-.sizes span {
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  font-size: 13px;
-}
-
-/* BUTTONS */
-.btn {
-  width: 100%;
-  padding: 14px;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: #111;
-  color: #fff;
-  margin-bottom: 12px;
-}
-
-.btn-outline {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: #111;
-}
-
-/* NOTE */
-.note {
-  font-size: 12px;
-  color: var(--muted);
-  margin: 20px 0 40px;
-}
-
-/* RELATED */
-.related {
-  border-top: 1px solid var(--border);
-  padding-top: 30px;
-}
-
-.related h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.related-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.related-item .img {
-  width: 100%;
-  height: 200px;
-  background: #ededed;
-  margin-bottom: 8px;
-}
-
-.related-item .name {
-  font-weight: 500;
-}
-
-.related-item .type {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-/* FOOTER */
-.footer {
-  border-top: 1px solid var(--border);
-  padding: 30px 20px;
-  text-align: center;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-  .main-image { height: 300px; }
-  .related-grid { grid-template-columns: 1fr; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ORIVO — Curated Style</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<div class="header">ORIVO</div>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">ORIVO</div>
+    <nav class="nav">
+      <a href="#">Shop</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-<div class="page">
+  <!-- HERO -->
+  <section class="hero">
+    <h1>ORIVO</h1>
+    <h2>Fresh. Stylish. Selected.</h2>
+    <p>Curated fashion, shoes & scents chosen for clean everyday style.</p>
+    <button class="btn-primary">Explore the selection</button>
+  </section>
 
-  <div class="main-image"></div>
-
-  <div class="thumbs">
-    <div class="thumb"></div>
-    <div class="thumb"></div>
-    <div class="thumb"></div>
-  </div>
-
-  <div class="category">CLOTHING</div>
-  <div class="title">Clean Everyday Shirt</div>
-  <div class="price">UGX 120,000</div>
-
-  <div class="description">
-    A clean, versatile piece selected for everyday comfort and style.
-    Easy to wear, easy to match — no overthinking.
-  </div>
-
-  <div class="size-label">Size</div>
-  <div class="sizes">
+  <!-- FEATURED PICKS -->
+  <section class="featured">
+    <h3>Featured Picks</h3>
+    <div class="grid">
+      <div class="card">
+        <div class="image"></div>
+        <p class="item-name">Clean Shirt</p>
+        <span class="item-type">Clothing</span>
+      </div>
+      <div class="card">
