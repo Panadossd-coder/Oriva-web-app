@@ -589,3 +589,27 @@ body {
   height: 340px !important;
   margin-bottom: 20px !important;
 }
+/* =========================
+   FEATURED PICKS — MOBILE OVERRIDE (FINAL)
+   ========================= */
+
+@media (max-width: 768px) {
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .featured .card {
+    transform: none !important;
+  }
+
+  .featured .card:hover {
+    transform: none !important;
+  }
+
+  .featured .image {
+    height: 220px !important;
+    margin-bottom: 14px;
+  }
+}
