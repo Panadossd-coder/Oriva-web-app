@@ -1,90 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ORIVO — Clean Everyday Shirt</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORIVO — Clean Everyday Shirt</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIABLES */
+:root {
+  --bg: #f7f7f5;
+  --text: #111;
+  --muted: #6b6b6b;
+  --border: #e5e5e5;
+}
+
+/* BASE */
+body {
+  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* HEADER */
+.header {
+  padding: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* CONTAINER */
+.page {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* IMAGE */
+.main-image {
+  width: 100%;
+  height: 340px;
+  background: #ededed;
+  margin-bottom: 14px;
+}
+
+.thumbs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.thumb {
+  width: 70px;
+  height: 70px;
+  background: #ededed;
+}
+
+/* INFO */
+.category {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin: 6px 0;
+}
+
+.price {
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.description {
+  color: var(--muted);
+  margin-bottom: 26px;
+}
+
+/* SIZE */
+.size-label {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.sizes {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.sizes span {
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/* BUTTONS */
+.btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #111;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: #111;
+}
+
+/* NOTE */
+.note {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 20px 0 40px;
+}
+
+/* RELATED */
+.related {
+  border-top: 1px solid var(--border);
+  padding-top: 30px;
+}
+
+.related h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.related-item .img {
+  width: 100%;
+  height: 200px;
+  background: #ededed;
+  margin-bottom: 8px;
+}
+
+.related-item .name {
+  font-weight: 500;
+}
+
+.related-item .type {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* FOOTER */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .main-image { height: 300px; }
+  .related-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
+
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="logo">ORIVO</div>
-  </header>
+<div class="header">ORIVO</div>
 
-  <!-- PRODUCT PAGE -->
-  <main class="product-page">
+<div class="page">
 
-    <!-- IMAGES -->
-    <div class="main-image"></div>
+  <div class="main-image"></div>
 
-    <div class="image-thumbs">
-      <div class="thumb"></div>
-      <div class="thumb"></div>
-      <div class="thumb"></div>
-    </div>
+  <div class="thumbs">
+    <div class="thumb"></div>
+    <div class="thumb"></div>
+    <div class="thumb"></div>
+  </div>
 
-    <!-- DETAILS -->
-    <span class="product-category">Clothing</span>
-    <h1 class="product-title">Clean Everyday Shirt</h1>
-    <div class="product-price">UGX 120,000</div>
+  <div class="category">CLOTHING</div>
+  <div class="title">Clean Everyday Shirt</div>
+  <div class="price">UGX 120,000</div>
 
-    <p class="product-description">
-      A clean, versatile piece selected for everyday comfort and style.
-      Easy to wear, easy to match — no overthinking.
-    </p>
+  <div class="description">
+    A clean, versatile piece selected for everyday comfort and style.
+    Easy to wear, easy to match — no overthinking.
+  </div>
 
-    <!-- SIZE -->
-    <div class="product-options">
-      <label>Size</label>
-      <div class="options">
-        <button>S</button>
-        <button>M</button>
-        <button>L</button>
-        <button>XL</button>
-      </div>
-    </div>
-
-    <!-- ACTIONS -->
-    <div class="product-actions">
-      <button class="btn-primary">Add to favourites</button>
-      <button class="btn-outline">Contact to buy</button>
-    </div>
-
-    <div class="product-note">
-      Curated by ORIVO • Selected for clean style
-    </div>
-
-    <!-- RELATED -->
-    <section class="related">
-      <h2>You may also like</h2>
-
-      <div class="related-grid">
-        <div class="card">
-          <div class="image"></div>
-          <div class="item-name">Minimal Sneakers</div>
-          <div class="item-type">Shoes</div>
-        </div>
-
-        <div class="card">
-          <div class="image"></div>
-          <div class="item-name">Light Daily Scent</div>
-          <div class="item-type">Perfume</div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="#">Shop</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </div>
-  </footer>
-
-</body>
-</html>
+  <div class="size-label">Size</div>
+  <div class="sizes">
