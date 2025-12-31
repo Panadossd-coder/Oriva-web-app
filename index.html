@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ORIVO — Curated Style</title>
+  <title>Product — ORIVO</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- HEADER (same as homepage) -->
   <header class="header">
     <div class="logo">ORIVO</div>
     <nav class="nav">
@@ -18,82 +18,101 @@
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>ORIVO</h1>
-    <h2>Fresh. Stylish. Selected.</h2>
-    <p>Curated fashion, shoes & scents chosen for clean everyday style.</p>
-    <button class="btn-primary">Explore the selection</button>
-  </section>
+  <!-- PRODUCT WRAPPER -->
+  <main class="product-page">
 
-  <!-- FEATURED PICKS -->
-  <section class="featured">
-    <h3>Featured Picks</h3>
-    <div class="grid">
-      <div class="card">
-        <div class="image"></div>
-        <p class="item-name">Clean Shirt</p>
-        <span class="item-type">Clothing</span>
-      </div>
-      <div class="card">
-        <div class="image"></div>
-        <p class="item-name">Minimal Sneakers</p>
-        <span class="item-type">Shoes</span>
-      </div>
-      <div class="card">
-        <div class="image"></div>
-        <p class="item-name">Light Scent</p>
-        <span class="item-type">Perfume</span>
-      </div>
-      <div class="card">
-        <div class="image"></div>
-        <p class="item-name">Daily Fit</p>
-        <span class="item-type">Clothing</span>
-      </div>
-    </div>
-  </section>
+    <!-- PRODUCT MAIN -->
+    <section class="product-main">
 
-  <!-- CATEGORIES -->
-  <section class="categories">
-    <h3>Shop by Category</h3>
-    <div class="category-grid">
-      <div class="category-card">
-        <div class="image"></div>
-        <p>Clothing</p>
-        <span>Explore →</span>
-      </div>
-      <div class="category-card">
-        <div class="image"></div>
-        <p>Shoes</p>
-        <span>Explore →</span>
-      </div>
-      <div class="category-card">
-        <div class="image"></div>
-        <p>Perfume</p>
-        <span>Explore →</span>
-      </div>
-    </div>
-  </section>
+      <!-- LEFT: IMAGES -->
+      <div class="product-images">
+        <div class="main-image"></div>
 
-  <!-- STORY -->
-  <section class="story">
-    <h3>Why ORIVO</h3>
-    <p>
-      We don’t chase logos or noise.
-      ORIVO selects fresh, stylish pieces that fit real life —
-      so you don’t overthink what to wear.
-    </p>
-  </section>
+        <div class="image-thumbs">
+          <div class="thumb"></div>
+          <div class="thumb"></div>
+          <div class="thumb"></div>
+        </div>
+      </div>
 
-  <!-- SOFT CTA -->
-  <section class="cta">
-    <h3>Stay close to ORIVO</h3>
-    <p>Discover new selections as they drop.</p>
-    <div class="cta-buttons">
-      <button>Follow on Instagram</button>
-      <button class="outline">Save favourites</button>
-    </div>
-  </section>
+      <!-- RIGHT: DETAILS -->
+      <div class="product-details">
+
+        <span class="product-category">Clothing</span>
+
+        <h1 class="product-title">Clean Everyday Shirt</h1>
+
+        <p class="product-price">UGX 120,000</p>
+
+        <p class="product-description">
+          A clean, versatile piece selected for everyday comfort and style.
+          Easy to wear, easy to match — no overthinking.
+        </p>
+
+        <!-- OPTIONS (OPTIONAL) -->
+        <div class="product-options">
+          <label>Size</label>
+          <div class="options">
+            <button>S</button>
+            <button>M</button>
+            <button>L</button>
+            <button>XL</button>
+          </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="product-actions">
+          <button class="btn-primary">Add to favourites</button>
+          <button class="btn-outline">Contact to buy</button>
+        </div>
+
+        <!-- TRUST NOTE -->
+        <p class="product-note">
+          Curated by ORIVO • Selected for clean style
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- DIVIDER -->
+    <hr class="divider" />
+
+    <!-- STYLE NOTES -->
+    <section class="product-style">
+      <h3>Why we selected this</h3>
+      <p>
+        This piece stands out for its simplicity and flexibility.
+        It works across different looks without forcing attention.
+      </p>
+    </section>
+
+    <!-- RELATED PICKS -->
+    <section class="related">
+      <h3>You may also like</h3>
+
+      <div class="grid">
+        <div class="card">
+          <div class="image"></div>
+          <p class="item-name">Minimal Sneakers</p>
+          <span class="item-type">Shoes</span>
+        </div>
+
+        <div class="card">
+          <div class="image"></div>
+          <p class="item-name">Light Daily Scent</p>
+          <span class="item-type">Perfume</span>
+        </div>
+
+        <div class="card">
+          <div class="image"></div>
+          <p class="item-name">Relaxed Fit Tee</p>
+          <span class="item-type">Clothing</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -103,7 +122,7 @@
       <a href="#">About</a>
       <a href="#">Contact</a>
     </div>
-    <p class="copyright">© ORIVO — Curated Style</p>
+    <p>© ORIVO — Curated Style</p>
   </footer>
 
 </body>
