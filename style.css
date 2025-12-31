@@ -178,3 +178,34 @@ body {
   color: var(--text-muted);
   text-decoration: none;
 }
+/* =========================
+   FEATURED PICKS — MOBILE FIX (FINAL)
+   ========================= */
+
+@media (max-width: 768px) {
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .featured .card,
+  .featured .card:hover {
+    transform: none !important;
+  }
+
+  .featured .image {
+    height: 220px !important;
+    margin-bottom: 14px;
+  }
+
+  .featured .item-name {
+    font-size: 14px;
+  }
+
+  .featured .item-type {
+    font-size: 12px;
+  }
+
+}
