@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* VARIABLES */
 :root {
   --bg-main: #F7F7F5;
   --text-main: #111111;
@@ -14,6 +16,7 @@
   --border-light: #E5E5E5;
 }
 
+/* BASE */
 body {
   background: var(--bg-main);
   color: var(--text-main);
@@ -32,22 +35,25 @@ body {
   font-weight: 700;
 }
 
-/* PRODUCT PAGE */
+/* PAGE */
 .product-page {
   padding: 20px;
 }
 
 /* IMAGES */
+.product-images {
+  margin-bottom: 24px;
+}
+
 .main-image {
   height: 260px;
   background: #EDEDED;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .image-thumbs {
   display: flex;
   gap: 8px;
-  margin-bottom: 20px;
 }
 
 .thumb {
@@ -56,7 +62,11 @@ body {
   background: #EDEDED;
 }
 
-/* DETAILS */
+/* PRODUCT DETAILS */
+.product-details {
+  margin-bottom: 40px;
+}
+
 .product-category {
   font-size: 12px;
   color: var(--accent);
@@ -89,6 +99,7 @@ body {
 .options {
   display: flex;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
 .options button {
@@ -99,7 +110,7 @@ body {
 
 /* ACTIONS */
 .product-actions {
-  margin: 20px 0;
+  margin-bottom: 16px;
 }
 
 .btn-primary {
@@ -118,15 +129,28 @@ body {
   border: 1px solid var(--border-light);
 }
 
+/* NOTE */
 .product-note {
   font-size: 12px;
   color: var(--text-muted);
-  margin-bottom: 40px;
+  margin-top: 10px;
 }
 
+/* ======================
+   RELATED PRODUCTS
+   ====================== */
 
+.related {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
 
-
+.related h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 16px;
+  font-size: 22px;
+}
 
 .related-grid {
   display: grid;
@@ -140,13 +164,39 @@ body {
   margin-bottom: 8px;
 }
 
+.item-name {
+  font-weight: 500;
+}
+
 .item-type {
   font-size: 12px;
   color: var(--text-muted);
 }
 
+/* ======================
+   WHY SECTION
+   ====================== */
+
+.product-style {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
+
+.product-style h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.product-style p {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
 /* FOOTER */
 .footer {
+  margin-top: 80px;
   text-align: center;
   padding: 40px 20px;
   border-top: 1px solid var(--border-light);
@@ -157,19 +207,4 @@ body {
   font-size: 13px;
   color: var(--text-muted);
   text-decoration: none;
-}
-
-
-/* FORCE RELATED TO FEEL ATTACHED TO PRODUCT */
-.related {
-  margin-top: 20px !important;
-  padding-top: 10px;
-  border-top: 1px solid #e5e5e5;
-}
-
-/* PUSH WHY SECTION CLEARLY DOWN */
-.product-style {
-  margin-top: 60px !important;
-  padding-top: 20px;
-  border-top: 1px solid #e5e5e5;
 }
