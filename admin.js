@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     products.forEach(product => {
       const item = document.createElement("div");
-      item.className = "product-row";
+      item.className = "admin-product";
 
       item.innerHTML = `
   <div>
