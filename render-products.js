@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
     card.dataset.price = product.price;
     card.dataset.description = product.description;
 
-    card.innerHTML = 
-      <div class="image"></div>
-      <p class="item-name">${product.name}</p>
-      <span class="item-type">${product.category}</span>
-    ;
+    card.innerHTML = `
+  <div class="image"></div>
+  <p class="item-name">${product.name}</p>
+  <span class="item-type">${product.category}</span>
+`;
 
     card.addEventListener("click", () => {
       localStorage.setItem("orivoProduct", JSON.stringify(product));
