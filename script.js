@@ -3,9 +3,13 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ---------- PRODUCT CARDS ONLY ---------- */
-  document.querySelectorAll('.card[data-name]').forEach(card => {
+  /* ---------- ALL CARDS ---------- */
+  document.querySelectorAll(".card").forEach(card => {
     card.addEventListener("click", () => {
+
+      // Only redirect if this is a PRODUCT card
+      if (!card.dataset.name) return;
+
       const productData = {
         name: card.dataset.name,
         category: card.dataset.category,
