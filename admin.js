@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // DELETE PRODUCT
   function attachDeleteHandlers() {
-   document.querySelectorAll(".product-row button").forEach(btn => {
+ document.querySelectorAll(".admin-product button").forEach(btn => {
       btn.addEventListener("click", () => {
         const id = Number(btn.dataset.id);
         const products = getProducts().filter(p => p.id !== id);
