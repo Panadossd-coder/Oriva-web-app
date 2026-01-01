@@ -57,7 +57,12 @@
     </section>
 
   </main>
-
+<script>
+  if (!sessionStorage.getItem("orivoAdminCacheFix")) {
+    sessionStorage.setItem("orivoAdminCacheFix", "true");
+    location.reload(true);
+  }
+</script>
   <script src="admin.js"></script>
 </body>
 </html>
