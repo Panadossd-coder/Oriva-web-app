@@ -1,82 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ORIVO — Admin Panel</title>
-  <link rel="stylesheet" href="admin.css" />
-</head>
-<body>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("productForm");
+  const productList = document.getElementById("productList");
 
-<!-- AUTH GUARD -->
-<script>
-  if (localStorage.getItem("orivoAdminAuth") !== "true") {
-    window.location.href = "admin-login.html";
-  }
-</script>
+  if (!form || !productList) return;
 
-<!-- HEADER -->
-<header class="admin-header">
-  <h1>ORIVO Admin</h1>
-  <p>Product Control Panel</p>
+  renderProducts();
 
-  <button id="logoutBtn">Logout</button>
-</header>
+  // ADD / UPDATE PRODUCT
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-<!-- MAIN -->
-<main class="admin-container">
+    const id = document.getElementById("productId").value;
+    const name = document.getElementById("productName").value.trim();
+    const category = document.getElementById("productCategory").value;
+    const price = document.getElementById("productPrice").value.trim();
+    const description = document.getElementById("productDescription").value.trim();
 
-  <!-- ADD / EDIT PRODUCT -->
-  <section class="admin-card">
-    <h2>Add / Edit Product</h2>
+    if (!name || !price || !description) {
+      alert("Fill all fields");
+      return;
+    }
 
-    <form id="productForm">
-      <input type="hidden" id="productId" />
+    const products = getProducts();
 
-      <label>
-        Product Name
-        <input type="text" id="productName" required />
-      </label>
+    if (id) {
+      // UPDATE
+      const index = products.findIndex(p => p.id === Number(id));
+      if (index !== -1) {
+        products[index] = {
+          id: Number(id),
+          name,
+          category,
+          price,
+          description
+        };
+      }
+    } else {
+      // ADD
+      products.push({
+        id: Date.now(),
+        name,
+        category,
+        price,
+        description
+      });
+    }
 
-      <label>
-        Category
-        <select id="productCategory">
-          <option value="Clothing">Clothing</option>
-          <option value="Shoes">Shoes</option>
-          <option value="Perfume">Perfume</option>
-        </select>
-      </label>
-
-      <label>
-        Price
-        <input type="text" id="productPrice" required />
-      </label>
-
-      <label>
-        Description
-        <textarea id="productDescription" required></textarea>
-      </label>
-
-      <button type="submit">Save Product</button>
-    </form>
-  </section>
-
-  <!-- PRODUCT LIST -->
-  <section class="admin-card">
-    <h2>All Products</h2>
-    <div id="productList"></div>
-  </section>
-
-</main>
-
-<script src="admin.js"></script>
-
-<script>
-  document.getElementById("logoutBtn").addEventListener("click", () => {
-    localStorage.removeItem("orivoAdminAuth");
-    window.location.href = "admin-login.html";
+    localStorage.setItem("orivoProducts", JSON.stringify(products));
+    form.reset();
+    document.getElementById("productId").value = "";
+    renderProducts();
   });
-</script>
 
-</body>
-</html>
+  // RENDER PRODUCTS
+  function renderProducts() {
+    const products = getProducts();
+    productList.innerHTML = "";
+
+    if (products.length === 0) {
+      productList.innerHTML = "<p>No products yet.</p>";
+      return;
+    }
+
+    products.forEach(product => {
+      const div = document.createElement("div");
+      div.className = "admin-product";
+
+      div.innerHTML = `
+        <div>
+          <strong>${product.name}</strong>
+          <p>${product.category} — UGX ${product.price}</p>
+          <small>${product.description}</small>
+        </div>
+        <div>
+          <button class="edit" data-id="${product.id}">Edit</button>
+          <button class="delete" data-id="${product.id}">Delete</button>
+        </div>
+      `;
+
+      productList.appendChild(div);
+    });
+
+    attachHandlers();
+  }
+
+  // EDIT & DELETE
+  function attachHandlers() {
+    document.querySelectorAll(".edit").forEach(btn => {
+      btn.onclick = () => {
+        const product = getProducts().find(p => p.id === Number(btn.dataset.id));
+        if (!product) return;
+
+        document.getElementById("productId").value = product.id;
+        document.getElementById("productName").value = product.name;
+        document.getElementById("productCategory").value = product.category;
+        document.getElementById("productPrice").value = product.price;
+        document.getElementById("productDescription").value = product.description;
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+    });
+
+    document.querySelectorAll(".delete").forEach(btn => {
+      btn.onclick = () => {
+        if (!confirm("Delete product?")) return;
+        const id = Number(btn.dataset.id);
+        const products = getProducts().filter(p => p.id !== id);
+        localStorage.setItem("orivoProducts", JSON.stringify(products));
+        renderProducts();
+      };
+    });
+  }
+
+  function getProducts() {
+    return JSON.parse(localStorage.getItem("orivoProducts")) || [];
+  }
+});
