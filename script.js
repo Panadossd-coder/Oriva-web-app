@@ -5,19 +5,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------- PRODUCT CARD CLICK ---------- */
   document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
+  card.addEventListener("click", () => {
 
-      const productData = {
-        name: card.dataset.name || "",
-        category: card.dataset.category || "",
-        price: card.dataset.price || "",
-        description: card.dataset.description || ""
-      };
+    // ⛔ STOP if this is not a product card
+    if (!card.dataset.name) return;
 
-      localStorage.setItem("orivoProduct", JSON.stringify(productData));
-      window.location.href = "product.html";
-    });
+    const productData = {
+      name: card.dataset.name,
+      category: card.dataset.category,
+      price: card.dataset.price,
+      description: card.dataset.description
+    };
+
+    localStorage.setItem("orivoProduct", JSON.stringify(productData));
+    window.location.href = "product.html";
   });
+});
 
   /* ---------- CATEGORY CLICK ---------- */
   document.querySelectorAll(".category-card").forEach(card => {
