@@ -32,6 +32,20 @@ document.querySelectorAll(".card").forEach(card => {
       }
     });
   });
+    /* ---------- SHOP CATEGORY FILTER ---------- */
+  if (window.location.pathname.includes("shop.html")) {
+    const selectedCategory = localStorage.getItem("orivoCategory");
+
+    if (selectedCategory) {
+      document.querySelectorAll(".card").forEach(card => {
+        const cardCategory = card.dataset.category;
+
+        if (!cardCategory || cardCategory.toLowerCase() !== selectedCategory) {
+          card.style.display = "none";
+        }
+      });
+    }
+  }
 
   /* ---------- HERO BUTTON ---------- */
   const exploreBtn = document.querySelector(".btn-primary");
