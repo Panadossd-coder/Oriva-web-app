@@ -140,3 +140,10 @@ form button:hover {
     grid-template-columns: 1fr;
   }
 }
+.delete-btn {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #e00;
+  cursor: pointer;
+}
