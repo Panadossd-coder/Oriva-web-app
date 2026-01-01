@@ -28,20 +28,34 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const newProduct = {
-      id: Date.now(),
-      name,
-      category,
-      price,
-      description
-    };
-
     const products = getProducts();
-    products.push(newProduct);
+const existingId = document.getElementById("productId").value;
+
+if (existingId) {
+  // UPDATE EXISTING
+  const index = products.findIndex(p => p.id === Number(existingId));
+  products[index] = {
+    id: Number(existingId),
+    name,
+    category,
+    price,
+    description
+  };
+} else {
+  // ADD NEW
+  products.push({
+    id: Date.now(),
+    name,
+    category,
+    price,
+    description
+  });
+}
 
     localStorage.setItem("orivoProducts", JSON.stringify(products));
 
     form.reset();
+    document.getElementById("productId").value = "";
     renderProducts();
   });
 
@@ -60,20 +74,47 @@ document.addEventListener("DOMContentLoaded", () => {
       item.className = "admin-product";
 
       item.innerHTML = `
-        <div>
-          <strong>${product.name}</strong>
-          <p>${product.category} — UGX ${product.price}</p>
-          <small>${product.description}</small>
-        </div>
-        <button data-id="${product.id}">Delete</button>
-      `;
+  <div>
+    <strong>${product.name}</strong>
+    <p>${product.category} — UGX ${product.price}</p>
+    <small>${product.description}</small>
+  </div>
+  <div>
+    <button class="edit-btn" data-id="${product.id}">Edit</button>
+    <button class="delete-btn" data-id="${product.id}">Delete</button>
+  </div>
+`;
 
       productList.appendChild(item);
     });
 
-    attachDeleteHandlers();
+    attachActionHandlers();
   }
+function attachActionHandlers() {
+  // EDIT
+  document.querySelectorAll(".edit-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = Number(btn.dataset.id);
+      const product = getProducts().find(p => p.id === id);
 
+      document.getElementById("productId").value = product.id;
+      document.getElementById("productName").value = product.name;
+      document.getElementById("productCategory").value = product.category;
+      document.getElementById("productPrice").value = product.price;
+      document.getElementById("productDescription").value = product.description;
+    });
+  });
+
+  // DELETE
+  document.querySelectorAll(".delete-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = Number(btn.dataset.id);
+      const products = getProducts().filter(p => p.id !== id);
+      localStorage.setItem("orivoProducts", JSON.stringify(products));
+      renderProducts();
+    });
+  });
+}
   // DELETE PRODUCT
   function attachDeleteHandlers() {
     document.querySelectorAll(".admin-product button").forEach(btn => {
