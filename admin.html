@@ -58,8 +58,9 @@
 
   </main>
 <script>
-  if (!sessionStorage.getItem("orivoAdminCacheFix")) {
-    sessionStorage.setItem("orivoAdminCacheFix", "true");
+  // 🔥 ONE-TIME FORCE CACHE REFRESH (iOS Safari)
+  if (!sessionStorage.getItem("orivo_admin_refresh")) {
+    sessionStorage.setItem("orivo_admin_refresh", "true");
     location.reload(true);
   }
 </script>
