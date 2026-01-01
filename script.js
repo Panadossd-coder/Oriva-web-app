@@ -47,13 +47,18 @@ document.querySelectorAll(".card").forEach(card => {
     }
   }
 
-  /* ---------- HERO BUTTON ---------- */
-  const exploreBtn = document.querySelector(".btn-primary");
-  if (exploreBtn) {
-    exploreBtn.addEventListener("click", () => {
-      window.location.href = "shop.html";
-    });
-  }
+  /* ---------- HERO BUTTON (ALL PRODUCTS) ---------- */
+const exploreBtn = document.querySelector(".btn-primary");
+
+if (exploreBtn) {
+  exploreBtn.addEventListener("click", () => {
+    // 🔥 CLEAR CATEGORY FILTER
+    localStorage.removeItem("orivoCategory");
+
+    // GO TO SHOP
+    window.location.href = "shop.html";
+  });
+}
 
   /* ---------- PRODUCT PAGE INJECTION ---------- */
   if (window.location.pathname.includes("product.html")) {
