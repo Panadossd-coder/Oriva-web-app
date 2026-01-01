@@ -8,73 +8,56 @@
 </head>
 <body>
 
-<!-- AUTH GUARD -->
-<script>
-  if (localStorage.getItem("orivoAdminAuth") !== "true") {
-    window.location.href = "admin-login.html";
-  }
-</script>
+  <header class="admin-header">
+    <h1>ORIVO Admin</h1>
+    <p>Product Control Panel</p>
+  </header>
 
-<header class="admin-header">
-  <h1>ORIVO Admin</h1>
-  <p>Product Control Panel</p>
+  <main class="admin-container">
 
-  <button id="logoutBtn">Logout</button>
-</header>
+    <!-- ADD PRODUCT FORM -->
+    <section class="admin-card">
+      <h2>Add / Edit Product</h2>
 
-<main class="admin-container">
+      <form id="productForm">
+        <input type="hidden" id="productId" />
 
-  <!-- ADD / EDIT -->
-  <section class="admin-card">
-    <h2>Add / Edit Product</h2>
+        <label>
+          Product Name
+          <input type="text" id="productName" required />
+        </label>
 
-    <form id="productForm">
-      <input type="hidden" id="productId" />
+        <label>
+          Category
+          <select id="productCategory">
+            <option value="Clothing">Clothing</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Perfume">Perfume</option>
+          </select>
+        </label>
 
-      <label>
-        Product Name
-        <input type="text" id="productName" required />
-      </label>
+        <label>
+          Price
+          <input type="text" id="productPrice" required />
+        </label>
 
-      <label>
-        Category
-        <select id="productCategory">
-          <option value="Clothing">Clothing</option>
-          <option value="Shoes">Shoes</option>
-          <option value="Perfume">Perfume</option>
-        </select>
-      </label>
+        <label>
+          Description
+          <textarea id="productDescription" required></textarea>
+        </label>
 
-      <label>
-        Price
-        <input type="text" id="productPrice" required />
-      </label>
+        <button type="submit">Save Product</button>
+      </form>
+    </section>
 
-      <label>
-        Description
-        <textarea id="productDescription" required></textarea>
-      </label>
+    <!-- PRODUCT LIST -->
+    <section class="admin-card">
+      <h2>All Products</h2>
+      <div id="productList"></div>
+    </section>
 
-      <button type="submit">Save Product</button>
-    </form>
-  </section>
+  </main>
 
-  <!-- LIST -->
-  <section class="admin-card">
-    <h2>All Products</h2>
-    <div id="productList"></div>
-  </section>
-
-</main>
-
-<script src="admin.js"></script>
-
-<script>
-  document.getElementById("logoutBtn").addEventListener("click", () => {
-    localStorage.removeItem("orivoAdminAuth");
-    window.location.href = "admin-login.html";
-  });
-</script>
-
+  <script src="admin.js"></script>
 </body>
 </html>
