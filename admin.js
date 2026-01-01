@@ -76,9 +76,14 @@ document.addEventListener("DOMContentLoaded", () => {
   productList.addEventListener("click", (e) => {
   if (e.target.tagName !== "BUTTON") return;
 
+  e.preventDefault();      // 🔥 REQUIRED FOR iOS
+  e.stopPropagation();     // 🔥 REQUIRED FOR iOS
+
   const id = Number(e.target.dataset.id);
+
   const products = getProducts().filter(p => p.id !== id);
   localStorage.setItem("orivoProducts", JSON.stringify(products));
+
   renderProducts();
 });
 
