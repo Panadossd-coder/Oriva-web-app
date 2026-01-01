@@ -1,1 +1,63 @@
-1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ORIVO — Admin Panel</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <header class="admin-header">
+    <h1>ORIVO Admin</h1>
+    <p>Product Control Panel</p>
+  </header>
+
+  <main class="admin-container">
+
+    <!-- ADD PRODUCT FORM -->
+    <section class="admin-card">
+      <h2>Add / Edit Product</h2>
+
+      <form id="productForm">
+        <input type="hidden" id="productId" />
+
+        <label>
+          Product Name
+          <input type="text" id="name" required />
+        </label>
+
+        <label>
+          Category
+          <select id="category">
+            <option value="Clothing">Clothing</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Perfume">Perfume</option>
+          </select>
+        </label>
+
+        <label>
+          Price
+          <input type="text" id="price" required />
+        </label>
+
+        <label>
+          Description
+          <textarea id="description" required></textarea>
+        </label>
+
+        <button type="submit">Save Product</button>
+      </form>
+    </section>
+
+    <!-- PRODUCT LIST -->
+    <section class="admin-card">
+      <h2>All Products</h2>
+      <div id="productList"></div>
+    </section>
+
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
