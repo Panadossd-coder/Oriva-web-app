@@ -60,4 +60,9 @@
 
   <script src="admin.js"></script>
 </body>
+<script>
+  if (localStorage.getItem("orivoAdminAuth") !== "true") {
+    window.location.href = "admin-login.html";
+  }
+</script>
 </html>
