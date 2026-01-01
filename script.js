@@ -1,9 +1,9 @@
-// ORIVO — Product Navigation Logic
+// ORIVO — Navigation & Product Logic
 // Safe data transfer using localStorage
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Product cards → product page with data
+  /* ---------- PRODUCT CARD CLICK ---------- */
   document.querySelectorAll(".card").forEach(card => {
     card.addEventListener("click", () => {
 
@@ -15,19 +15,22 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       localStorage.setItem("orivoProduct", JSON.stringify(productData));
-
       window.location.href = "product.html";
     });
   });
 
-  // Category cards → categories page
+  /* ---------- CATEGORY CLICK ---------- */
   document.querySelectorAll(".category-card").forEach(card => {
     card.addEventListener("click", () => {
-      window.location.href = "categories.html";
+      const category = card.dataset.category;
+      if (category) {
+        localStorage.setItem("orivoCategory", category.toLowerCase());
+        window.location.href = "shop.html";
+      }
     });
   });
 
-  // Hero button → shop page
+  /* ---------- HERO BUTTON ---------- */
   const exploreBtn = document.querySelector(".btn-primary");
   if (exploreBtn) {
     exploreBtn.addEventListener("click", () => {
@@ -35,15 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-});
-// ORIVO — Product Page Data Injection
-if (window.location.pathname.includes("product.html")) {
-  const product = JSON.parse(localStorage.getItem("orivoProduct"));
+  /* ---------- PRODUCT PAGE INJECTION ---------- */
+  if (window.location.pathname.includes("product.html")) {
+    const product = JSON.parse(localStorage.getItem("orivoProduct"));
 
-  if (product) {
-    document.getElementById("product-name").textContent = product.name;
-    document.getElementById("product-category").textContent = product.category;
-    document.getElementById("product-price").textContent = product.price;
-    document.getElementById("product-description").textContent = product.description;
+    if (product) {
+      document.getElementById("product-name").textContent = product.name;
+      document.getElementById("product-category").textContent = product.category;
+      document.getElementById("product-price").textContent = product.price;
+      document.getElementById("product-description").textContent = product.description;
+    }
   }
-}
+
+});
