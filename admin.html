@@ -20,18 +20,7 @@
   <h1>ORIVO Admin</h1>
   <p>Product Control Panel</p>
 
-  <button id="logoutBtn" style="
-    margin-top: 12px;
-    padding: 8px 16px;
-    background: #fff;
-    color: #111;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 13px;
-  ">
-    Logout
-  </button>
+  <button id="logoutBtn">Logout</button>
 </header>
 
 <!-- MAIN -->
@@ -42,7 +31,6 @@
     <h2>Add / Edit Product</h2>
 
     <form id="productForm">
-      <!-- hidden ID for edit -->
       <input type="hidden" id="productId" />
 
       <label>
@@ -81,18 +69,14 @@
 
 </main>
 
-<!-- LOGOUT HANDLER -->
-<script>
-  const logoutBtn = document.getElementById("logoutBtn");
+<script src="admin.js"></script>
 
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("orivoAdminAuth");
-      window.location.href = "admin-login.html";
-    });
-  }
+<script>
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("orivoAdminAuth");
+    window.location.href = "admin-login.html";
+  });
 </script>
 
-<script src="admin.js"></script>
 </body>
 </html>
