@@ -7,7 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("productForm");
   const productList = document.getElementById("productList");
 
-  // Load products on page load
+  if (!form || !productList) {
+    console.error("Admin panel IDs missing");
+    return;
+  }
+
   renderProducts();
 
   // SAVE PRODUCT
@@ -34,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const products = getProducts();
     products.push(newProduct);
+
     localStorage.setItem("orivoProducts", JSON.stringify(products));
 
     form.reset();
@@ -50,14 +55,14 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    products.forEach((product) => {
+    products.forEach(product => {
       const item = document.createElement("div");
       item.className = "admin-product";
 
       item.innerHTML = `
         <div>
           <strong>${product.name}</strong>
-          <p>${product.category} — ${product.price}</p>
+          <p>${product.category} — UGX ${product.price}</p>
           <small>${product.description}</small>
         </div>
         <button data-id="${product.id}">Delete</button>
@@ -71,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // DELETE PRODUCT
   function attachDeleteHandlers() {
-    document.querySelectorAll(".admin-product button").forEach((btn) => {
+    document.querySelectorAll(".admin-product button").forEach(btn => {
       btn.addEventListener("click", () => {
         const id = Number(btn.dataset.id);
         const products = getProducts().filter(p => p.id !== id);
