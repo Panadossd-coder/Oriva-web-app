@@ -36,3 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+// ORIVO — Product Page Data Injection
+if (window.location.pathname.includes("product.html")) {
+  const product = JSON.parse(localStorage.getItem("orivoProduct"));
+
+  if (product) {
+    document.getElementById("product-name").textContent = product.name;
+    document.getElementById("product-category").textContent = product.category;
+    document.getElementById("product-price").textContent = product.price;
+    document.getElementById("product-description").textContent = product.description;
+  }
+}
