@@ -1,6 +1,6 @@
 // ================================
 // ORIVO ADMIN PANEL — admin.js
-// LocalStorage Product Control (add / edit / delete)
+// LocalStorage Product Control
 // ================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,15 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // initial render
   renderProducts();
 
-  // SAVE PRODUCT (add or update)
+  // SAVE PRODUCT
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const idField = document.getElementById("productId");
-    const existingId = idField.value;
     const name = document.getElementById("productName").value.trim();
     const category = document.getElementById("productCategory").value;
     const price = document.getElementById("productPrice").value.trim();
@@ -31,39 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const newProduct = {
+      id: Date.now(),
+      name,
+      category,
+      price,
+      description
+    };
+
     const products = getProducts();
-
-    if (existingId) {
-      // UPDATE existing product
-      const index = products.findIndex(p => p.id === Number(existingId));
-      if (index === -1) {
-        alert("Product not found for update");
-        return;
-      }
-
-      products[index] = {
-        id: Number(existingId),
-        name,
-        category,
-        price,
-        description
-      };
-    } else {
-      // ADD new product
-      products.push({
-        id: Date.now(),
-        name,
-        category,
-        price,
-        description
-      });
-    }
+    products.push(newProduct);
 
     localStorage.setItem("orivoProducts", JSON.stringify(products));
 
-    // reset form and state
     form.reset();
-    idField.value = "";
     renderProducts();
   });
 
@@ -72,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const products = getProducts();
     productList.innerHTML = "";
 
-    if (!products || products.length === 0) {
+    if (products.length === 0) {
       productList.innerHTML = "<p>No products added yet.</p>";
       return;
     }
@@ -81,51 +59,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const item = document.createElement("div");
       item.className = "admin-product";
 
-      item.innerHTML = `
+      item.innerHTML = 
         <div>
-          <strong>${escapeHtml(product.name)}</strong>
-          <p>${escapeHtml(product.category)} — UGX ${escapeHtml(product.price)}</p>
-          <small>${escapeHtml(product.description)}</small>
+          <strong>${product.name}</strong>
+          <p>${product.category} — UGX ${product.price}</p>
+          <small>${product.description}</small>
         </div>
-        <div>
-          <button class="edit-btn" data-id="${product.id}">Edit</button>
-          <button class="delete-btn" data-id="${product.id}">Delete</button>
-        </div>
-      `;
+        <button data-id="${product.id}">Delete</button>
+      ;
 
       productList.appendChild(item);
     });
 
-    attachActionHandlers();
+    attachDeleteHandlers();
   }
 
-  // attach Edit + Delete handlers
-  function attachActionHandlers() {
-    // EDIT
-    document.querySelectorAll(".edit-btn").forEach(btn => {
+  // DELETE PRODUCT
+  function attachDeleteHandlers() {
+    document.querySelectorAll(".admin-product button").forEach(btn => {
       btn.addEventListener("click", () => {
         const id = Number(btn.dataset.id);
-        const product = getProducts().find(p => p.id === id);
-        if (!product) return;
-
-        // populate form for editing
-        document.getElementById("productId").value = product.id;
-        document.getElementById("productName").value = product.name;
-        document.getElementById("productCategory").value = product.category;
-        document.getElementById("productPrice").value = product.price;
-        document.getElementById("productDescription").value = product.description;
-
-        // scroll to form (optional)
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    });
-
-    // DELETE
-    document.querySelectorAll(".delete-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const id = Number(btn.dataset.id);
-        if (!confirm("Delete this product?")) return;
-
         const products = getProducts().filter(p => p.id !== id);
         localStorage.setItem("orivoProducts", JSON.stringify(products));
         renderProducts();
@@ -133,22 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // GET PRODUCTS (from localStorage)
+  // GET PRODUCTS
   function getProducts() {
-    try {
-      return JSON.parse(localStorage.getItem("orivoProducts")) || [];
-    } catch (e) {
-      console.error("Failed to parse products from localStorage", e);
-      return [];
-    }
-  }
-
-  // small helper to avoid inserting raw HTML (basic)
-  function escapeHtml(str = "") {
-    return String(str)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+    return JSON.parse(localStorage.getItem("orivoProducts")) || [];
   }
 });
