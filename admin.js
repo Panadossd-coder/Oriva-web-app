@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>${product.category} — UGX ${product.price}</p>
     <small>${product.description}</small>
   </div>
-  <button data-id="${product.id}">Delete</button>
+ <button type="button" data-id="${product.id}">Delete</button>
 `;
 
       productList.appendChild(item);
