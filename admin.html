@@ -7,16 +7,19 @@
   <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
+
+<!-- AUTH GUARD -->
 <script>
   if (localStorage.getItem("orivoAdminAuth") !== "true") {
     window.location.href = "admin-login.html";
   }
 </script>
- <header class="admin-header">
+
+<!-- HEADER -->
+<header class="admin-header">
   <h1>ORIVO Admin</h1>
   <p>Product Control Panel</p>
 
-  <!-- LOGOUT BUTTON -->
   <button id="logoutBtn" style="
     margin-top: 12px;
     padding: 8px 16px;
@@ -31,57 +34,54 @@
   </button>
 </header>
 
-  <main class="admin-container">
+<!-- MAIN -->
+<main class="admin-container">
 
-    <!-- ADD PRODUCT FORM -->
-    <section class="admin-card">
-      <h2>Add / Edit Product</h2>
+  <!-- ADD / EDIT PRODUCT -->
+  <section class="admin-card">
+    <h2>Add / Edit Product</h2>
 
-      <form id="productForm">
-        <input type="hidden" id="productId" />
+    <form id="productForm">
+      <!-- hidden ID for edit -->
+      <input type="hidden" id="productId" />
 
-        <label>
-          Product Name
-          <input type="text" id="productName" required />
-        </label>
-        <label>
-  Image URL
-  <input type="text" id="productImage" placeholder="https://..." required />
-</label>
+      <label>
+        Product Name
+        <input type="text" id="productName" required />
+      </label>
 
-        <label>
-          Category
-          <select id="productCategory">
-            <option value="Clothing">Clothing</option>
-            <option value="Shoes">Shoes</option>
-            <option value="Perfume">Perfume</option>
-          </select>
-        </label>
+      <label>
+        Category
+        <select id="productCategory">
+          <option value="Clothing">Clothing</option>
+          <option value="Shoes">Shoes</option>
+          <option value="Perfume">Perfume</option>
+        </select>
+      </label>
 
-        <label>
-          Price
-          <input type="text" id="productPrice" required />
-        </label>
+      <label>
+        Price
+        <input type="text" id="productPrice" required />
+      </label>
 
-        <label>
-          Description
-          <textarea id="productDescription" required></textarea>
-        </label>
+      <label>
+        Description
+        <textarea id="productDescription" required></textarea>
+      </label>
 
-        <button type="submit">Save Product</button>
-      </form>
-    </section>
+      <button type="submit">Save Product</button>
+    </form>
+  </section>
 
-    <!-- PRODUCT LIST -->
-    <section class="admin-card">
-      <h2>All Products</h2>
-      <div id="productList"></div>
-    </section>
+  <!-- PRODUCT LIST -->
+  <section class="admin-card">
+    <h2>All Products</h2>
+    <div id="productList"></div>
+  </section>
 
-  </main>
+</main>
 
- <script src="admin.js"></script>
-
+<!-- LOGOUT -->
 <script>
   const logoutBtn = document.getElementById("logoutBtn");
 
@@ -93,5 +93,6 @@
   }
 </script>
 
+<script src="admin.js"></script>
 </body>
 </html>
