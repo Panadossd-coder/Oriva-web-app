@@ -1,5 +1,5 @@
 // ================================
-// ORIVO ADMIN PANEL — admin.js
+// ORIVO ADMIN PANEL — admin.v2.js
 // LocalStorage Product Control
 // ================================
 
@@ -28,16 +28,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const newProduct = {
+    const products = getProducts();
+
+    products.push({
       id: Date.now(),
       name,
       category,
       price,
       description
-    };
-
-    const products = getProducts();
-    products.push(newProduct);
+    });
 
     localStorage.setItem("orivoProducts", JSON.stringify(products));
 
@@ -60,32 +59,29 @@ document.addEventListener("DOMContentLoaded", () => {
       item.className = "admin-product";
 
       item.innerHTML = `
-  <div>
-    <strong>${product.name}</strong>
-    <p>${product.category} — UGX ${product.price}</p>
-    <small>${product.description}</small>
-  </div>
- <button type="button" data-id="${product.id}">Delete</button>
-`;
+        <div>
+          <strong>${product.name}</strong>
+          <p>${product.category} — UGX ${product.price}</p>
+          <small>${product.description}</small>
+        </div>
+        <button type="button" data-id="${product.id}">Delete</button>
+      `;
 
       productList.appendChild(item);
     });
-
   }
 
+  // DELETE (EVENT DELEGATION — iOS SAFE)
   productList.addEventListener("click", (e) => {
-  if (e.target.tagName !== "BUTTON") return;
+    if (e.target.tagName !== "BUTTON") return;
 
-  e.preventDefault();      // 🔥 REQUIRED FOR iOS
-  e.stopPropagation();     // 🔥 REQUIRED FOR iOS
+    const id = Number(e.target.dataset.id);
 
-  const id = Number(e.target.dataset.id);
+    const products = getProducts().filter(p => p.id !== id);
+    localStorage.setItem("orivoProducts", JSON.stringify(products));
 
-  const products = getProducts().filter(p => p.id !== id);
-  localStorage.setItem("orivoProducts", JSON.stringify(products));
-
-  renderProducts();
-});
+    renderProducts();
+  });
 
   // GET PRODUCTS
   function getProducts() {
