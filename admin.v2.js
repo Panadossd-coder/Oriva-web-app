@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${product.category} — UGX ${product.price}</p>
           <small>${product.description}</small>
         </div>
-        <button type="button" data-id="${product.id}">Delete</button>
+      <span class="delete-btn" data-id="${product.id}">Delete</span>
       `;
 
       productList.appendChild(item);
@@ -72,16 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // DELETE (EVENT DELEGATION — iOS SAFE)
-  productList.addEventListener("click", (e) => {
-    if (e.target.tagName !== "BUTTON") return;
-
-    const id = Number(e.target.dataset.id);
-
-    const products = getProducts().filter(p => p.id !== id);
-    localStorage.setItem("orivoProducts", JSON.stringify(products));
-
-    renderProducts();
-  });
+  
 
   // GET PRODUCTS
   function getProducts() {
