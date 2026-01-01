@@ -7,7 +7,11 @@
   <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
-
+<script>
+  if (localStorage.getItem("orivoAdminAuth") !== "true") {
+    window.location.href = "admin-login.html";
+  }
+</script>
   <header class="admin-header">
     <h1>ORIVO Admin</h1>
     <p>Product Control Panel</p>
@@ -60,9 +64,4 @@
 
   <script src="admin.js"></script>
 </body>
-<script>
-  if (localStorage.getItem("orivoAdminAuth") !== "true") {
-    window.location.href = "admin-login.html";
-  }
-</script>
 </html>
