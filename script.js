@@ -1,19 +1,24 @@
-// ORIVO — Safe Navigation Logic
-// This file only handles clicks. No layout changes.
+// ORIVO — Safe Navigation + Category Filtering
+// No layout changes. No DOM creation. Safe logic only.
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Featured product cards → product page
+  /* =========================
+     NAVIGATION
+     ========================= */
+
+  // Featured & shop product cards → product page
   document.querySelectorAll(".card").forEach(card => {
     card.addEventListener("click", () => {
       window.location.href = "product.html";
     });
   });
 
-  // Category cards → categories page
+  // Category cards → categories.html with filter
   document.querySelectorAll(".category-card").forEach(card => {
     card.addEventListener("click", () => {
-      window.location.href = "categories.html";
+      const category = card.dataset.category;
+      window.location.href = `shop.html?category=${category}`;
     });
   });
 
@@ -22,6 +27,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if (exploreBtn) {
     exploreBtn.addEventListener("click", () => {
       window.location.href = "shop.html";
+    });
+  }
+
+  /* =========================
+     CATEGORY FILTERING (SHOP)
+     ========================= */
+
+  const params = new URLSearchParams(window.location.search);
+  const activeCategory = params.get("category");
+
+  if (activeCategory) {
+    document.querySelectorAll(".card").forEach(card => {
+      const cardCategory = card.dataset.category;
+
+      if (cardCategory !== activeCategory) {
+        card.style.display = "none";
+      }
     });
   }
 
