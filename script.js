@@ -3,24 +3,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ---------- PRODUCT CARD CLICK ---------- */
-document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("click", () => {
 
-    // 🚫 Ignore cards without product data
-    if (!card.dataset.name) return;
-
-    const productData = {
-      name: card.dataset.name,
-      category: card.dataset.category,
-      price: card.dataset.price,
-      description: card.dataset.description
-    };
-
-    localStorage.setItem("orivoProduct", JSON.stringify(productData));
-    window.location.href = "product.html";
-  });
-});
 
   /* ---------- CATEGORY CLICK ---------- */
   document.querySelectorAll(".category-card").forEach(card => {
