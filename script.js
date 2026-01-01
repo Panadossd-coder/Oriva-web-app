@@ -3,33 +3,33 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ---------- ALL CARDS ---------- */
-  document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
+  /* ---------- PRODUCT CARD CLICK ---------- */
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("click", () => {
 
-      // Only redirect if this is a PRODUCT card
-      if (!card.dataset.name) return;
+    // 🚫 Ignore cards without product data
+    if (!card.dataset.name) return;
 
-      const productData = {
-        name: card.dataset.name,
-        category: card.dataset.category,
-        price: card.dataset.price,
-        description: card.dataset.description
-      };
+    const productData = {
+      name: card.dataset.name,
+      category: card.dataset.category,
+      price: card.dataset.price,
+      description: card.dataset.description
+    };
 
-      localStorage.setItem("orivoProduct", JSON.stringify(productData));
-      window.location.href = "product.html";
-    });
+    localStorage.setItem("orivoProduct", JSON.stringify(productData));
+    window.location.href = "product.html";
   });
+});
 
-  /* ---------- CATEGORY CARDS ---------- */
+  /* ---------- CATEGORY CLICK ---------- */
   document.querySelectorAll(".category-card").forEach(card => {
     card.addEventListener("click", () => {
       const category = card.dataset.category;
-      if (!category) return;
-
-      localStorage.setItem("orivoCategory", category.toLowerCase());
-      window.location.href = "shop.html";
+      if (category) {
+        localStorage.setItem("orivoCategory", category.toLowerCase());
+        window.location.href = "shop.html";
+      }
     });
   });
 
@@ -41,15 +41,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ---------- PRODUCT PAGE ---------- */
+  /* ---------- PRODUCT PAGE INJECTION ---------- */
   if (window.location.pathname.includes("product.html")) {
     const product = JSON.parse(localStorage.getItem("orivoProduct"));
-    if (!product) return;
 
-    document.getElementById("product-name").textContent = product.name;
-    document.getElementById("product-category").textContent = product.category;
-    document.getElementById("product-price").textContent = product.price;
-    document.getElementById("product-description").textContent = product.description;
+    if (product) {
+      document.getElementById("product-name").textContent = product.name;
+      document.getElementById("product-category").textContent = product.category;
+      document.getElementById("product-price").textContent = product.price;
+      document.getElementById("product-description").textContent = product.description;
+    }
   }
 
 });
