@@ -1,6 +1,6 @@
 // ================================
-// ORIVO ADMIN PANEL — admin.v2.js
-// iOS-SAFE LocalStorage Product Control
+// ORIVO ADMIN PANEL — admin.js
+// FULL STABLE VERSION
 // ================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,15 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const productList = document.getElementById("productList");
 
   if (!form || !productList) {
-    console.error("Admin panel IDs missing");
+    console.error("Admin panel elements missing");
     return;
   }
 
+  // expose render globally (needed by delete)
+  window.renderProducts = renderProducts;
+
+  // initial load
   renderProducts();
 
-  // ==============================
+  // ======================
   // SAVE PRODUCT
-  // ==============================
+  // ======================
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -33,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const products = getProducts();
 
     products.push({
-      id: Date.now(),
+      id: Date.now(), // unique ID
       name,
       category,
       price,
@@ -46,9 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
   });
 
-  // ==============================
+  // ======================
   // RENDER PRODUCTS
-  // ==============================
+  // ======================
   function renderProducts() {
     const products = getProducts();
     productList.innerHTML = "";
@@ -64,12 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       item.innerHTML = `
         <div>
-          <strong>${product.name}</strong>
-          <p>${product.category} — UGX ${product.price}</p>
-          <small>${product.description}</small>
+          <strong>${escapeHtml(product.name)}</strong>
+          <p>${escapeHtml(product.category)} — UGX ${escapeHtml(product.price)}</p>
+          <small>${escapeHtml(product.description)}</small>
         </div>
-        <button type="button" onclick="deleteProduct(${product.id})">
-          Delete
+
+        <button
+          type="button"
+          class="remove-btn"
+          onclick="removeProduct(${product.id})">
+          Remove
         </button>
       `;
 
@@ -77,24 +85,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==============================
-  // GET PRODUCTS
-  // ==============================
+  // ======================
+  // STORAGE HELPERS
+  // ======================
   function getProducts() {
-    return JSON.parse(localStorage.getItem("orivoProducts")) || [];
+    try {
+      return JSON.parse(localStorage.getItem("orivoProducts")) || [];
+    } catch {
+      return [];
+    }
   }
 
-  // expose render for delete refresh
-  window.renderProducts = renderProducts;
+  function escapeHtml(text = "") {
+    return String(text)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
 });
 
 // ==============================
-// DELETE PRODUCT (GLOBAL — iOS SAFE)
+// REMOVE PRODUCT (GLOBAL — SAFE)
 // ==============================
-window.deleteProduct = function (id) {
-  const products = JSON.parse(localStorage.getItem("orivoProducts")) || [];
-  const updated = products.filter(p => p.id !== id);
+window.removeProduct = function (id) {
+  let products = JSON.parse(localStorage.getItem("orivoProducts")) || [];
 
-  localStorage.setItem("orivoProducts", JSON.stringify(updated));
-  window.renderProducts();
+  products = products.filter(product => product.id !== id);
+
+  localStorage.setItem("orivoProducts", JSON.stringify(products));
+
+  if (window.renderProducts) {
+    window.renderProducts();
+  }
 };
