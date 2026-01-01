@@ -1,40 +1,27 @@
-/* =========================
-   ORIVO — Minimal UI Logic
-   Safe / No Layout Touching
-   ========================= */
+// ORIVO — Safe Navigation Logic
+// This file only handles clicks. No layout changes.
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================
-     SIZE SELECTION
-     ========================= */
-  const sizeButtons = document.querySelectorAll(".options button");
-  let selectedSize = null;
-
-  sizeButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      // Clear active state
-      sizeButtons.forEach(b => b.classList.remove("active"));
-
-      // Set active
-      btn.classList.add("active");
-      selectedSize = btn.textContent.trim();
+  // Featured product cards → product page
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+      window.location.href = "product.html";
     });
   });
 
-  /* =========================
-     PRIMARY ACTION SAFETY
-     ========================= */
-  const primaryBtn = document.querySelector(".btn-primary");
+  // Category cards → categories page
+  document.querySelectorAll(".category-card").forEach(card => {
+    card.addEventListener("click", () => {
+      window.location.href = "categories.html";
+    });
+  });
 
-  if (primaryBtn) {
-    primaryBtn.addEventListener("click", (e) => {
-      if (!selectedSize) {
-        e.preventDefault();
-        alert("Please select a size first.");
-      } else {
-        console.log("Selected size:", selectedSize);
-      }
+  // Hero button → shop page
+  const exploreBtn = document.querySelector(".btn-primary");
+  if (exploreBtn) {
+    exploreBtn.addEventListener("click", () => {
+      window.location.href = "shop.html";
     });
   }
 
