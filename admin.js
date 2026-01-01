@@ -1,8 +1,6 @@
-First examin and see what am missing 
-
 // ================================
 // ORIVO ADMIN PANEL — admin.js
-// LocalStorage Product Control
+// LocalStorage Product Control (v2)
 // ================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,16 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const productList = document.getElementById("productList");
 
   if (!form || !productList) {
-    console.error("Admin panel IDs missing");
+    console.error("Admin panel elements missing");
     return;
   }
 
   renderProducts();
 
-  // SAVE PRODUCT
+  // =========================
+  // SAVE / UPDATE PRODUCT
+  // =========================
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    const idField = document.getElementById("productId");
     const name = document.getElementById("productName").value.trim();
     const image = document.getElementById("productImage").value.trim();
     const category = document.getElementById("productCategory").value;
@@ -32,38 +33,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const products = getProducts();
-const existingId = document.getElementById("productId").value;
+    const existingId = idField.value;
 
-if (existingId) {
-  // UPDATE EXISTING
-  const index = products.findIndex(p => p.id === Number(existingId));
-  products[index] = {
-  id: Number(existingId),
-  name,
-  image,
-  category,
-  price,
-  description
-};
-} else {
-  // ADD NEW
-  products.push({
-    id: Date.now(),
-    name,
-    category,
-    price,
-    description
-  });
-}
+    if (existingId) {
+      // 🔁 UPDATE EXISTING PRODUCT
+      const index = products.findIndex(p => p.id === Number(existingId));
+
+      if (index === -1) {
+        alert("Product not found");
+        return;
+      }
+
+      products[index] = {
+        id: Number(existingId),
+        name,
+        image,
+        category,
+        price,
+        description
+      };
+    } else {
+      // ➕ ADD NEW PRODUCT
+      products.push({
+        id: Date.now(),
+        name,
+        image,
+        category,
+        price,
+        description
+      });
+    }
 
     localStorage.setItem("orivoProducts", JSON.stringify(products));
 
     form.reset();
-    document.getElementById("productId").value = "";
+    idField.value = "";
     renderProducts();
   });
 
-  // RENDER PRODUCTS
+  // =========================
+  // RENDER PRODUCTS LIST
+  // =========================
   function renderProducts() {
     const products = getProducts();
     productList.innerHTML = "";
@@ -74,56 +84,58 @@ if (existingId) {
     }
 
     products.forEach(product => {
-      const item = document.createElement("div");
-      item.className = "admin-product";
+      const row = document.createElement("div");
+      row.className = "product-row";
 
-      item.innerHTML = 
-  <div>
-    <strong>${product.name}</strong>
-    <p>${product.category} — UGX ${product.price}</p>
-    <small>${product.description}</small>
-  </div>
-  <div>
-    <button class="edit-btn" data-id="${product.id}">Edit</button>
-    <button class="delete-btn" data-id="${product.id}">Delete</button>
-  </div>
-;
+      row.innerHTML = `
+        <div>
+          <strong>${product.name}</strong><br />
+          <span>${product.category} — UGX ${product.price}</span>
+        </div>
+        <div>
+          <button class="edit" data-id="${product.id}">Edit</button>
+          <button class="delete" data-id="${product.id}">Delete</button>
+        </div>
+      `;
 
-      productList.appendChild(item);
+      productList.appendChild(row);
     });
 
     attachActionHandlers();
   }
-function attachActionHandlers() {
-  // EDIT
-  document.querySelectorAll(".edit-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const id = Number(btn.dataset.id);
-      const product = getProducts().find(p => p.id === id);
 
-      document.getElementById("productId").value = product.id;
-      document.getElementById("productName").value = product.name;
-      document.getElementById("productCategory").value = product.category;
-      document.getElementById("productPrice").value = product.price;
-      document.getElementById("productDescription").value = product.description;
-    });
-  });
+  // =========================
+  // EDIT & DELETE HANDLERS
+  // =========================
+  function attachActionHandlers() {
 
-  // DELETE
-  document.querySelectorAll(".delete-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const id = Number(btn.dataset.id);
-      const products = getProducts().filter(p => p.id !== id);
-      localStorage.setItem("orivoProducts", JSON.stringify(products));
-      renderProducts();
-    });
-  });
-}
-  // DELETE PRODUCT
-  function attachDeleteHandlers() {
-    document.querySelectorAll(".admin-product button").forEach(btn => {
+    // ✏️ EDIT
+    document.querySelectorAll(".edit").forEach(btn => {
       btn.addEventListener("click", () => {
         const id = Number(btn.dataset.id);
+        const product = getProducts().find(p => p.id === id);
+
+        if (!product) return;
+
+        document.getElementById("productId").value = product.id;
+        document.getElementById("productName").value = product.name;
+        document.getElementById("productImage").value = product.image;
+        document.getElementById("productCategory").value = product.category;
+        document.getElementById("productPrice").value = product.price;
+        document.getElementById("productDescription").value = product.description;
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+
+    // 🗑 DELETE
+    document.querySelectorAll(".delete").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = Number(btn.dataset.id);
+
+        const confirmed = confirm("Delete this product?");
+        if (!confirmed) return;
+
         const products = getProducts().filter(p => p.id !== id);
         localStorage.setItem("orivoProducts", JSON.stringify(products));
         renderProducts();
@@ -131,7 +143,9 @@ function attachActionHandlers() {
     });
   }
 
+  // =========================
   // GET PRODUCTS
+  // =========================
   function getProducts() {
     return JSON.parse(localStorage.getItem("orivoProducts")) || [];
   }
