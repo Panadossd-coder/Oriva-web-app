@@ -3,13 +3,9 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ---------- PRODUCT CARD CLICK ---------- */
-  document.addEventListener("DOMContentLoaded", () => {
-
   /* ---------- PRODUCT CARDS ONLY ---------- */
   document.querySelectorAll('.card[data-name]').forEach(card => {
     card.addEventListener("click", () => {
-
       const productData = {
         name: card.dataset.name,
         category: card.dataset.category,
@@ -28,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const category = card.dataset.category;
       if (!category) return;
 
-      localStorage.setItem("orivoCategory", category);
+      localStorage.setItem("orivoCategory", category.toLowerCase());
       window.location.href = "shop.html";
     });
   });
@@ -44,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------- PRODUCT PAGE ---------- */
   if (window.location.pathname.includes("product.html")) {
     const product = JSON.parse(localStorage.getItem("orivoProduct"));
-
     if (!product) return;
 
     document.getElementById("product-name").textContent = product.name;
