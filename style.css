@@ -346,3 +346,51 @@ body {
   }
 
 }
+/* =========================
+   ORIVO v1.1 — Card Refinement
+   ========================= */
+
+.card,
+.category-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border-radius: 12px;
+}
+
+.card:hover,
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+}
+.card .image {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.featured {
+  background: #F9F9F8;
+}
+
+.categories {
+  background: #F7F7F5;
+}
+.featured h3,
+.categories h3,
+.story h3,
+.cta h3 {
+  letter-spacing: 0.5px;
+}
+
+.item-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.category-card p {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+.card,
+.category-card,
+.btn-primary {
+  cursor: pointer;
+}
