@@ -19,11 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const name = document.getElementById("productName").value.trim();
+    const image = document.getElementById("productImage").value.trim();
     const category = document.getElementById("productCategory").value;
     const price = document.getElementById("productPrice").value.trim();
     const description = document.getElementById("productDescription").value.trim();
 
-    if (!name || !price || !description) {
+    if (!name || !image || !price || !description) {
       alert("Please fill all fields");
       return;
     }
