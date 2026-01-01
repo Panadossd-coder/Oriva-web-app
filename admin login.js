@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
-  const PIN = "1234"; // 🔐 CHANGE THIS
+  const PIN = "panado"; // 🔐 CHANGE THIS
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
