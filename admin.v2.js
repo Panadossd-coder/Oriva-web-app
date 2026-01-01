@@ -1,6 +1,6 @@
 // ================================
 // ORIVO ADMIN PANEL — admin.v2.js
-// LocalStorage Product Control
+// iOS-SAFE LocalStorage Product Control
 // ================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderProducts();
 
+  // ==============================
   // SAVE PRODUCT
+  // ==============================
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -31,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const products = getProducts();
 
     products.push({
-      id: String(Date.now()),
+      id: Date.now(),
       name,
       category,
       price,
@@ -44,7 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
   });
 
+  // ==============================
   // RENDER PRODUCTS
+  // ==============================
   function renderProducts() {
     const products = getProducts();
     productList.innerHTML = "";
@@ -64,18 +68,33 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${product.category} — UGX ${product.price}</p>
           <small>${product.description}</small>
         </div>
-      <span class="delete-btn" data-id="${product.id}">Delete</span>
+        <button type="button" onclick="deleteProduct(${product.id})">
+          Delete
+        </button>
       `;
 
       productList.appendChild(item);
     });
   }
 
-  // DELETE (EVENT DELEGATION — iOS SAFE)
-  
-
+  // ==============================
   // GET PRODUCTS
+  // ==============================
   function getProducts() {
     return JSON.parse(localStorage.getItem("orivoProducts")) || [];
   }
+
+  // expose render for delete refresh
+  window.renderProducts = renderProducts;
 });
+
+// ==============================
+// DELETE PRODUCT (GLOBAL — iOS SAFE)
+// ==============================
+window.deleteProduct = function (id) {
+  const products = JSON.parse(localStorage.getItem("orivoProducts")) || [];
+  const updated = products.filter(p => p.id !== id);
+
+  localStorage.setItem("orivoProducts", JSON.stringify(updated));
+  window.renderProducts();
+};
