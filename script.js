@@ -4,11 +4,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------- PRODUCT CARD CLICK ---------- */
-  document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
+  document.addEventListener("DOMContentLoaded", () => {
 
-      // ⛔ stop if this card is NOT a product
-      if (!card.dataset.name) return;
+  /* ---------- PRODUCT CARDS ONLY ---------- */
+  document.querySelectorAll('.card[data-name]').forEach(card => {
+    card.addEventListener("click", () => {
 
       const productData = {
         name: card.dataset.name,
@@ -17,23 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
         description: card.dataset.description
       };
 
-      localStorage.setItem(
-        "orivoProduct",
-        JSON.stringify(productData)
-      );
-
+      localStorage.setItem("orivoProduct", JSON.stringify(productData));
       window.location.href = "product.html";
     });
   });
 
-  /* ---------- CATEGORY CLICK ---------- */
+  /* ---------- CATEGORY CARDS ---------- */
   document.querySelectorAll(".category-card").forEach(card => {
     card.addEventListener("click", () => {
       const category = card.dataset.category;
-      if (category) {
-        localStorage.setItem("orivoCategory", category.toLowerCase());
-        window.location.href = "shop.html";
-      }
+      if (!category) return;
+
+      localStorage.setItem("orivoCategory", category);
+      window.location.href = "shop.html";
     });
   });
 
@@ -45,16 +41,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ---------- PRODUCT PAGE INJECTION ---------- */
+  /* ---------- PRODUCT PAGE ---------- */
   if (window.location.pathname.includes("product.html")) {
     const product = JSON.parse(localStorage.getItem("orivoProduct"));
 
-    if (product) {
-      document.getElementById("product-name").textContent = product.name;
-      document.getElementById("product-category").textContent = product.category;
-      document.getElementById("product-price").textContent = product.price;
-      document.getElementById("product-description").textContent = product.description;
-    }
+    if (!product) return;
+
+    document.getElementById("product-name").textContent = product.name;
+    document.getElementById("product-category").textContent = product.category;
+    document.getElementById("product-price").textContent = product.price;
+    document.getElementById("product-description").textContent = product.description;
   }
 
 });
