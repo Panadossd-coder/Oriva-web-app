@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const products = getProducts();
 
     products.push({
-      id: Date.now(),
+      id: String(Date.now()),
       name,
       category,
       price,
