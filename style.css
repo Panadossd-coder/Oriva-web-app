@@ -394,3 +394,26 @@ body {
 .btn-primary {
   cursor: pointer;
 }
+/* =========================
+   ORIVO — All Products CTA
+   ========================= */
+
+.all-products-cta {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.all-products-cta .btn-outline {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.all-products-cta .btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
