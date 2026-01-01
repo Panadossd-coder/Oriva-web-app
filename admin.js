@@ -57,16 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     products.forEach(product => {
       const item = document.createElement("div");
-      item.className = "admin-product";
+      item.className = "product-row";
 
-      item.innerHTML = 
-        <div>
-          <strong>${product.name}</strong>
-          <p>${product.category} — UGX ${product.price}</p>
-          <small>${product.description}</small>
-        </div>
-        <button data-id="${product.id}">Delete</button>
-      ;
+      item.innerHTML = `
+  <div>
+    <strong>${product.name}</strong>
+    <p>${product.category} — UGX ${product.price}</p>
+    <small>${product.description}</small>
+  </div>
+  <button data-id="${product.id}">Delete</button>
+`;
 
       productList.appendChild(item);
     });
