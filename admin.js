@@ -1,6 +1,6 @@
 // ================================
 // ORIVO ADMIN PANEL — admin.js
-// LocalStorage Product Control (v2)
+// LocalStorage Product Control (add / edit / delete)
 // ================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,56 +8,51 @@ document.addEventListener("DOMContentLoaded", () => {
   const productList = document.getElementById("productList");
 
   if (!form || !productList) {
-    console.error("Admin panel elements missing");
+    console.error("Admin panel IDs missing");
     return;
   }
 
+  // initial render
   renderProducts();
 
-  // =========================
-  // SAVE / UPDATE PRODUCT
-  // =========================
+  // SAVE PRODUCT (add or update)
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const idField = document.getElementById("productId");
+    const existingId = idField.value;
     const name = document.getElementById("productName").value.trim();
-    const image = document.getElementById("productImage").value.trim();
     const category = document.getElementById("productCategory").value;
     const price = document.getElementById("productPrice").value.trim();
     const description = document.getElementById("productDescription").value.trim();
 
-    if (!name || !image || !price || !description) {
+    if (!name || !price || !description) {
       alert("Please fill all fields");
       return;
     }
 
     const products = getProducts();
-    const existingId = idField.value;
 
     if (existingId) {
-      // 🔁 UPDATE EXISTING PRODUCT
+      // UPDATE existing product
       const index = products.findIndex(p => p.id === Number(existingId));
-
       if (index === -1) {
-        alert("Product not found");
+        alert("Product not found for update");
         return;
       }
 
       products[index] = {
         id: Number(existingId),
         name,
-        image,
         category,
         price,
         description
       };
     } else {
-      // ➕ ADD NEW PRODUCT
+      // ADD new product
       products.push({
         id: Date.now(),
         name,
-        image,
         category,
         price,
         description
@@ -66,75 +61,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
     localStorage.setItem("orivoProducts", JSON.stringify(products));
 
+    // reset form and state
     form.reset();
     idField.value = "";
     renderProducts();
   });
 
-  // =========================
-  // RENDER PRODUCTS LIST
-  // =========================
+  // RENDER PRODUCTS
   function renderProducts() {
     const products = getProducts();
     productList.innerHTML = "";
 
-    if (products.length === 0) {
+    if (!products || products.length === 0) {
       productList.innerHTML = "<p>No products added yet.</p>";
       return;
     }
 
     products.forEach(product => {
-      const row = document.createElement("div");
-      row.className = "product-row";
+      const item = document.createElement("div");
+      item.className = "admin-product";
 
-      row.innerHTML = `
+      item.innerHTML = `
         <div>
-          <strong>${product.name}</strong><br />
-          <span>${product.category} — UGX ${product.price}</span>
+          <strong>${escapeHtml(product.name)}</strong>
+          <p>${escapeHtml(product.category)} — UGX ${escapeHtml(product.price)}</p>
+          <small>${escapeHtml(product.description)}</small>
         </div>
         <div>
-          <button class="edit" data-id="${product.id}">Edit</button>
-          <button class="delete" data-id="${product.id}">Delete</button>
+          <button class="edit-btn" data-id="${product.id}">Edit</button>
+          <button class="delete-btn" data-id="${product.id}">Delete</button>
         </div>
       `;
 
-      productList.appendChild(row);
+      productList.appendChild(item);
     });
 
     attachActionHandlers();
   }
 
-  // =========================
-  // EDIT & DELETE HANDLERS
-  // =========================
+  // attach Edit + Delete handlers
   function attachActionHandlers() {
-
-    // ✏️ EDIT
-    document.querySelectorAll(".edit").forEach(btn => {
+    // EDIT
+    document.querySelectorAll(".edit-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         const id = Number(btn.dataset.id);
         const product = getProducts().find(p => p.id === id);
-
         if (!product) return;
 
+        // populate form for editing
         document.getElementById("productId").value = product.id;
         document.getElementById("productName").value = product.name;
-        document.getElementById("productImage").value = product.image;
         document.getElementById("productCategory").value = product.category;
         document.getElementById("productPrice").value = product.price;
         document.getElementById("productDescription").value = product.description;
 
+        // scroll to form (optional)
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
     });
 
-    // 🗑 DELETE
-    document.querySelectorAll(".delete").forEach(btn => {
+    // DELETE
+    document.querySelectorAll(".delete-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         const id = Number(btn.dataset.id);
-
-        const confirmed = confirm("Delete this product?");
-        if (!confirmed) return;
+        if (!confirm("Delete this product?")) return;
 
         const products = getProducts().filter(p => p.id !== id);
         localStorage.setItem("orivoProducts", JSON.stringify(products));
@@ -143,10 +133,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // =========================
-  // GET PRODUCTS
-  // =========================
+  // GET PRODUCTS (from localStorage)
   function getProducts() {
-    return JSON.parse(localStorage.getItem("orivoProducts")) || [];
+    try {
+      return JSON.parse(localStorage.getItem("orivoProducts")) || [];
+    } catch (e) {
+      console.error("Failed to parse products from localStorage", e);
+      return [];
+    }
+  }
+
+  // small helper to avoid inserting raw HTML (basic)
+  function escapeHtml(str = "") {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
 });
