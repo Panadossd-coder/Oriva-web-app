@@ -71,20 +71,16 @@ document.addEventListener("DOMContentLoaded", () => {
       productList.appendChild(item);
     });
 
-    attachDeleteHandlers();
   }
 
-  // DELETE PRODUCT
-  function attachDeleteHandlers() {
- document.querySelectorAll(".admin-product button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const id = Number(btn.dataset.id);
-        const products = getProducts().filter(p => p.id !== id);
-        localStorage.setItem("orivoProducts", JSON.stringify(products));
-        renderProducts();
-      });
-    });
-  }
+  productList.addEventListener("click", (e) => {
+  if (e.target.tagName !== "BUTTON") return;
+
+  const id = Number(e.target.dataset.id);
+  const products = getProducts().filter(p => p.id !== id);
+  localStorage.setItem("orivoProducts", JSON.stringify(products));
+  renderProducts();
+});
 
   // GET PRODUCTS
   function getProducts() {
