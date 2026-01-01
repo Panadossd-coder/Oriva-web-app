@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
   <header class="header">
     <div class="logo">ORIVO</div>
     <nav class="nav">
-      <a href="#">Shop</a>
+      <a href="shop.html">Shop</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
     </nav>
@@ -30,49 +29,76 @@
   <!-- FEATURED PICKS -->
   <section class="featured">
     <h3>Featured Picks</h3>
+
     <div class="grid">
-      <div class="card">
-        <div class="image"></div>
+
+      <div class="card"
+           data-name="Clean Everyday Shirt"
+           data-category="Clothing"
+           data-price="UGX 120,000"
+           data-description="A clean, versatile piece selected for everyday comfort and style. Easy to wear, easy to match — no overthinking.">
+        <div class="image img-shirt"></div>
         <p class="item-name">Clean Shirt</p>
         <span class="item-type">Clothing</span>
       </div>
-      <div class="card">
-        <div class="image"></div>
+
+      <div class="card"
+           data-name="Minimal Sneakers"
+           data-category="Shoes"
+           data-price="UGX 180,000"
+           data-description="Clean everyday sneakers designed for comfort and a modern minimal look. Works with almost any outfit.">
+        <div class="image img-shoes"></div>
         <p class="item-name">Minimal Sneakers</p>
         <span class="item-type">Shoes</span>
       </div>
-      <div class="card">
-        <div class="image"></div>
+
+      <div class="card"
+           data-name="Light Scent"
+           data-category="Perfume"
+           data-price="UGX 95,000"
+           data-description="A subtle, fresh fragrance made for daily wear. Light, clean, and not overpowering.">
+        <div class="image img-perfume"></div>
         <p class="item-name">Light Scent</p>
         <span class="item-type">Perfume</span>
       </div>
-      <div class="card">
-        <div class="image"></div>
+
+      <div class="card"
+           data-name="Daily Fit"
+           data-category="Clothing"
+           data-price="UGX 110,000"
+           data-description="A relaxed daily outfit piece built for comfort, balance, and easy styling.">
+        <div class="image img-daily"></div>
         <p class="item-name">Daily Fit</p>
         <span class="item-type">Clothing</span>
       </div>
+
     </div>
   </section>
 
   <!-- CATEGORIES -->
   <section class="categories">
     <h3>Shop by Category</h3>
+
     <div class="category-grid">
-      <div class="category-card">
+
+      <div class="category-card" data-category="clothing">
         <div class="image"></div>
         <p>Clothing</p>
         <span>Explore →</span>
       </div>
-      <div class="category-card">
+
+      <div class="category-card" data-category="shoes">
         <div class="image"></div>
         <p>Shoes</p>
         <span>Explore →</span>
       </div>
-      <div class="category-card">
+
+      <div class="category-card" data-category="perfume">
         <div class="image"></div>
         <p>Perfume</p>
         <span>Explore →</span>
       </div>
+
     </div>
   </section>
 
@@ -100,12 +126,13 @@
   <footer class="footer">
     <p class="logo">ORIVO</p>
     <div class="footer-links">
-      <a href="#">Shop</a>
+      <a href="shop.html">Shop</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
     </div>
     <p class="copyright">© ORIVO — Curated Style</p>
   </footer>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
